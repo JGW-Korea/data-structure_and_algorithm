@@ -6,8 +6,8 @@
 
 ### Language
 
-| ![javascript icon](/assets/icons/js-svgrepo-com.svg) | ![typescript icon](/assets/icons/typescript-svgrepo-com.svg) |
-| :--------------------------------------------------: | :----------------------------------------------------------: |
-|                    **JavaScript**                    |                        **TypeScript**                        |
+| <img src="/assets/icons/js-svgrepo-com.svg" alt="javascript icons" width="200px" /> | <img src="/assets/icons/typescript-svgrepo-com.svg" width="200px" |
+| :---------------------------------------------------------------------------------: | :---------------------------------------------------------------: |
+|                                   **JavaScript**                                    |                          **TypeScript**                           |
 
 ### Git Commit Convention
