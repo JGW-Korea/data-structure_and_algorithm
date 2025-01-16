@@ -6,6 +6,8 @@
 
 <img src="/assets/images/data_structor-types.png" alt="자료구조 종류" width="520px" />
 
+<br />
+
 #### 1. 선형 자료구조(Linear Data Structor)
 
 ![선형 자료구조](/assets/images/linear_data_structures.png)
