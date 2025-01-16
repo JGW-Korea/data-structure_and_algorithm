@@ -4,7 +4,7 @@
 
 ### 자료구조(Data Structor) 종류
 
-![자료구조 종류](/assets/images/data_structor-types.png)
+<img src="/assets/images/data_structor-types.png" alt="자료구조 종류" width="520px" />
 
 #### 1. 선형 자료구조(Linear Data Structor)
 
@@ -12,6 +12,8 @@
 
 - 선형 자료구조는 각 원소가 이전 원소와 다음 원소와 연결되어 있으며, 자료들이 선형적으로 나열된 형태를 가진 구조를 말한다.
 - 선형 자료구조에는 **배열(Array)**, **연결 리스트(Linked List)**, **스택(Stack)**, **큐(Queue)** 등이 있다.
+
+<br />
 
 #### 2. 비선형 자료구조(Non-Linear Data Structor)
 
