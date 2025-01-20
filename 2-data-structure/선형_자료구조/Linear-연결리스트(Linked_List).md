@@ -16,17 +16,17 @@
 - 연결 리스트의 탐색 과정은 $O(N)$ 시간 복잡도가 소요된다.
 - 연결 리스트의 원소 삽입과 삭제는 해당 위치를 알고 있는 경우 $O(1)$ 시간 복잡도가 소요된다.
 
-**연결 리스트(Linked List) 종류**
+### 연결 리스트(Linked List) 종류
 
-1. 단일 연결 리스트(Single Linked List)
+**1. 단일 연결 리스트(Single Linked List)**
 
 - 헤드 노드(Head Node)에서 꼬리 노드(Tail Node)까지 단방향으로 이어지는 연결 리스트
 - 가장 단순한 형태를 가진 연결 리스트
 
 <br />
 
-2. 이중 연결 리스트(Double Linked List)
-   ![이중 연결 리스트](/assets/images/data_structor/linked_list/DoublyLinkedList.png)
+**2. 이중 연결 리스트(Double Linked List)**
+![이중 연결 리스트](/assets/images/data_structor/linked_list/DoublyLinkedList.png)
 
 - 각 노드(Node)가 두 개의 포인터 영역(Pointer)을 가지며, 이전 노드와 다음 노드의 주소를 저장하는 형태를 가진 연결 리스트
 - 양방향으로 연결되어 있어, 탐색 방향이 자유롭다.
@@ -34,8 +34,8 @@
 
 <br />
 
-3. 원형 연결 리스트(Circuler Linked List)
-   ![원형 연결 리스트](/assets/images/data_structor/linked_list/circuler_linked_list.png)
+**3. 원형 연결 리스트(Circuler Linked List)**
+![원형 연결 리스트](/assets/images/data_structor/linked_list/circuler_linked_list.png)
 
 - 꼬리 노드(Tail Node)가 헤드 노드(Head Node)로 연결되는 형태를 가진 연결 리스트
 - 메모리를 효율적으로 사용할 수 있으며, _원형 큐_ 등의 자료구조에서 활용된다.
