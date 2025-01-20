@@ -242,10 +242,35 @@ insert(value, idx) {
 
   const newNode = new Node(value); // 새로운 노드를 생성한다.
 
-  let currentNode = this.head;
-  let currentIdx = 1;
+  // 추가할 위치의 번호가 헤드 노드(Head Node)일 경우
+  if(idx === 1) {
+    newNode.next = this.head;
+    this.head = newNode;
 
-  while(currentIdx !== idx) {}
+    if(newNode.next === null) {
+      this.tail = newNode;
+    }
+  }
+
+  // 추가할 위치의 번호가 꼬리 노드(Tail Node)일 경우
+  else if(idx === this.length) {
+    this.tail.next = newNode;
+    this.tail = newNode;
+  }
+
+  // 추가할 위치의 번호가 N일 경우
+  else {
+    let currentNode = this.head;
+    let currentIdx = 1;
+
+    while(currentIdx !== idx) {
+      currentNode = currentNode.next;
+      currentIdx += 1;
+    }
+
+    newNode.next = currentNode.next;
+    currentNode.next = newNode;
+  }
 }
 ```
 
