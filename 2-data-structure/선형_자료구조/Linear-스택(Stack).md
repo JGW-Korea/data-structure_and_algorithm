@@ -54,10 +54,8 @@
 ### V. 스택(Stack) 전체 코드
 
 <details>
-  <summary>배열(Array)을 이용한 방식</summary>
-  <pre>
-    <code class="language-javascript">
-      const a = 10;
-    </code>
-  </pre>
+<summary>배열(Array)을 이용한 방식</summary>
+
+```jsx
 </details>
+```
