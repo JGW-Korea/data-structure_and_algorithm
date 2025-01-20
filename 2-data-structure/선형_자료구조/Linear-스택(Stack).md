@@ -1,5 +1,7 @@
 ![스택 배경 이미지](/assets/images/data_structor/stack/stack_thumbnail.webp)
 
+> 💡 스택(Stack), 큐(Queue), 데크(Dequeue) 자료구조는 기본적으로 특정 위치의 원소를 제외하고, 탐색, 삽입, 삭제가 기본적으로 이루어지면 안된다. 이로 인해 스택(Stack), 큐(Queue), 데크(Dequeue)를 묶어서 제한된 자료구조(Restricted Structures)라고 부르기도 한다.
+
 스택(Stack)이란 **마지막에 삽입된 원소가 첫 번째로 삭제되는 구조**를 가지는 자료구조를 말한다. (LIFO, Last In First Out)
 
 - 실생활의 예시로 프링글스 통을 생각하면 된다.
@@ -33,6 +35,18 @@
   - JavaScript의 배열 크기는 동적이기 때문에 배열의 크기를 지정하지 않아도 된다.
   - Array 객체의 인스턴스 메서드로 각 기능을 제공해준다.
 
+<br />
+
 ##### 2. 연결 리스트(Linked List)
 
 ![연결 리스트를 이용한 방법](/assets/images/data_structor/stack/stack_linked_list.webp)
+
+## 스택(Stack) 기능 구현
+
+### I. 원소 삽입(Push)
+
+### II. 원소 삭제(Pop)
+
+### III. 최상위 원소 확인(Top)
+
+### IV. 스택 비어있는지 여부 확인(Empty)
