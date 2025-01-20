@@ -29,9 +29,9 @@
 
 <div style="display: flex; width: 100%;">
   <div>
-    <img src="/assets/images/data_structor/stack/stack_array.webp" alt="스택 배열 표현" width="100px" />
+    <img src="/assets/images/data_structor/stack/stack_array.webp" alt="스택 배열 표현" width="200px" />
   </div>
-  <div style="flex-grow: 1;"></div>
+  <div style="flex-grow: 1;">asdasd</div>
 </div>
 
 ##### 2. 연결 리스트(Linked List)
