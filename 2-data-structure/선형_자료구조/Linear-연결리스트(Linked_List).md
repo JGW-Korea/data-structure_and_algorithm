@@ -54,11 +54,156 @@
 |추가|$O(N)$|$O(1)$|
 |삭제|$O(N)$|$O(1)$|
 
-- 추가와 삭제가 반복되는 로직일 경우 → 연결 리스트(Linked List) 사용 지향
-- 조회가 반복되는 로직일 경우 → 배열(Array) 사용 지향
+- 추가와 삭제가 반복되는 로직일 경우 → 연결 리스트(Linked List) 사용 권장
+- 조회가 반복되는 로직일 경우 → 배열(Array) 사용 권장
 
 **2. 메모리**
 ![배열 연결 리스트 메모리 관점](/assets/images/data_structor/linked_list/different_array_linked_list_memory.webp)
 
-- 배열(Array): 순차적인 데이터 (즉, 메모리를 연속적으로 할당)
-- 연결 리스트(Linked List): 순차적인 데이터 X (즉, 메모리를 연속적으로 할당하지 않음)
+- 배열(Array): 순차적인 데이터 저장 (메모리를 연속적으로 할당)
+- 연결 리스트(Linked List): 비순차적인 데이터 저장 (메모리를 연속적으로 할당하지 않음)
+
+## 연결 리스트(Linked List) 기능 구현
+
+### I. 노드 탐색 및 변경(Read & Update)
+
+```jsx
+// 노드 탐색
+get(idx) {
+  if(this.lenght === 0 || idx > this.length || idx === 0) return; // 예외 처리
+  if(this.length === 1 || idx === 1) return this.head; // 헤드 노드(Head Node) 반환
+
+  let currentNode = this.head;
+  let currentIdx = 1;
+
+  while(currentIdx !== idx) {
+    currentNode = currentNode.next;
+    currentIdx += 1;
+  }
+
+  return currentNode;
+}
+
+// 노드 데이터 변경
+set(idx, value) {
+  const updatedNode = this.get(idx);
+
+  if(!updatedNode) return; // 존재하지 인덱스 노드에 접근할 경우 예외 처리
+  updatedNode.value = value; // 존재하는 노드일 경우 데이터 영역 값 수정
+}
+```
+
+- 연결 리스트(Linked List)는 노드의 위치가 메모리에 직접 저장된 형태가 아니다.
+- 대신, 각 노드는 다음 노드의 위치(주소)를 가리키는 링크를 저장하고 있다.
+- 따라서 특정 노드를 찾기 위해서는 헤드 노드(Head Node)부터 시작해서 찾고자 하는 노드를 찾을 때까지 계속 포인터를 통해 이동해야 한다.
+- 이로 인해, 최선의 경우(Best Case) $O(1)$ 시간 복잡도를 가지지만, 최악의 경우(Worst Case) $O(N)$ 시간 복잡도를 가지게 된다.
+
+### 연결 리스트 탐색(Read) 동작 원리 _(찾고자 하는 수: 4)_
+
+![연결 리스트 탐색(Read) 동작 원리](/assets/images/data_structor/linked_list/linked_list_read.webp)
+
+1. 헤드 노드(Head Node)부터 시작한다.
+2. 각 노드(Node)의 데이터 영역과 찾고자 하는 수가 다르면 포인터를 통해 다음 노드로 이동한다.
+3. 찾고자 하는 수를 찾을 때까지 2번 과정을 반복한다.
+
+### II. 노드 삭제(Delete)
+
+### 1. 마지막 원소 삭제
+
+```jsx
+pop() {
+  if(this.length === 0) return; // 예외 처리: 연결 리스트에 저장된 원소가 없을 경우
+
+  let returnNode;
+
+  // 연결 리스트에 저장된 원소가 하나일 경우
+  if(this.length === 1) {
+    returnNode = this.head;
+    this.head = null;
+    this.tail = null;
+
+  } else { // 연결 리스트에 저장된 원소가 2개 이상일 경우
+    let currentNode = this.head;
+
+    // 현재 노드의 포인터 영역 주소가 null을 가리키는 노드를 찾을 때까지 순회한다.
+    while(currentNode.next.next !== null) {
+      currentNode = currentNode.next;
+    }
+
+    returnNode = currentNode.next;
+    this.tail = currentNode;
+    this.tail.next = null;
+  }
+
+  this.length -= 1;
+  return returnNode;
+}
+```
+
+### 2. 특정 위치 노드 삭제
+
+```jsx
+remove(idx) {
+  if(idx === 0 || this.length === 0 || idx > this.length) return; // 예외 처리
+
+  let returnNode;
+
+  // 연결 리스트에 저장된 원소가 하나일 경우
+  if(this.length === 1) {
+    returnNode = this.head;
+    this.head = null;
+    this.tail = null;
+  } else { // 연결 리스트에 저장된 원소가 2개 이상일 경우
+    let currentNode = this.head;
+    let currentIdx = 1;
+
+    // 삭제하고 싶은 위치 이전 노드까지 방문한다.
+    while(currentIdx !== idx - 1) {
+      currentNode = currentNode.next;
+      currentIdx += 1;
+    }
+
+    returnNode = currentNode.next;
+    currentNode.next = currentNode.next.next;
+
+    // 삭제한 위치의 노드가 꼬리 노드(Tail Node)인 경우
+    if(currentNode.next === null) {
+      this.tail = currentNode;
+    }
+
+  }
+
+  this.length -= 1;
+  return returnNode;
+}
+```
+
+### 3. 첫 번째 원소 삭제
+
+```jsx
+shift() {
+  if(this.length === 0) return; // 예외 처리: 연결 리스트에 저장된 원소가 없을 경우
+
+  let returnNode = this.head;
+
+  if(this.length === 1) {
+    this.head = null;
+    this.tail = null;
+  } else {
+    this.head = this.head.next;
+  }
+
+  this.length -= 1;
+  return returnNode;
+}
+```
+
+### 연결 리스트(Linked List) 노드 삭제 동작 원리
+
+![linked_list_delete_step_1](/assets/images/data_structor/linked_list/linked_list_delete_step_1.webp)
+![linked_list_delete_step_2](/assets/images/data_structor/linked_list/linked_list_delete_step_3.webp)
+![linked_list_delete_step_3](/assets/images/data_structor/linked_list/linked_list_delete_step_2.webp)
+
+1. 삭제할 노드의 이전 노드의 포인터를 삭제할 노드의 다음 노드로 변경한다.
+2. 삭제할 노드와 다음 노드의 연결을 끊는다.
+3. 삭제된 노드는 가비지 컬렉터에 의해 메모리에서 제거된다.
