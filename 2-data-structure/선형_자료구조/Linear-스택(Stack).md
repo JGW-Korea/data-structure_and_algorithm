@@ -27,11 +27,12 @@
 
 ##### 1. 배열(Array)
 
-<div style="display: flex; width: 100%;">
-  <div>
-    <img src="/assets/images/data_structor/stack/stack_array.webp" alt="스택 배열 표현" width="200px" />
-  </div>
-  <div style="flex-grow: 1;">asdasd</div>
-</div>
+<img src="/assets/images/data_structor/stack/stack_array.webp" alt="스택 배열 표현" width="248px" />
+
+- JavaScript 배열 이용 장점
+  - JavaScript의 배열 크기는 동적이기 때문에 배열의 크기를 지정하지 않아도 된다.
+  - Array 객체의 인스턴스 메서드로 각 기능을 제공해준다.
 
 ##### 2. 연결 리스트(Linked List)
+
+![연결 리스트를 이용한 방법](/assets/images/data_structor/stack/stack_linked_list.webp)
