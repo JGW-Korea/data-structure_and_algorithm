@@ -41,20 +41,115 @@
 
 ![연결 리스트를 이용한 방법](/assets/images/data_structor/stack/stack_linked_list.webp)
 
+1. 헤드 노드(Head Node)가 최상위 원소(Top)가 된다.
+2. 헤드 노드(Head Node)부터 다음 원소가 가리키는 위치(주소)의 데이터가 최상위 원소 아래에 쌓인 데이터를 의미한다.
+
 ## 스택(Stack) 기능 구현
 
 ### I. 원소 삽입(Push)
 
+1. 배열(Array)을 이용한 방식
+
+```jsx
+stack.push(10); // Array 객체에서 제공하는 인스턴스 메서드 push() 사용
+```
+
+2. 연결 리스트(Linked List)를 이용한 방식
+
+```jsx
+push(value) {
+  const newNode = newNode(value);
+  newNode.prev = this.top;
+  this.top = newNode;
+  this.length += 1;
+}
+```
+
 ### II. 원소 삭제(Pop)
+
+1. 배열(Array)을 이용한 방식
+
+```jsx
+stack.pop(); // Array 객체에서 제공하는 인스턴스 메서드 pop() 사용
+```
+
+2. 연결 리스트(Linked List)를 이용한 방식
+
+```jsx
+pop() {
+  if(this.empty()) return;
+
+  const returnNode = this.top; // 헤드 노드(Head Node)의 노드 정보를 할당한다.
+
+  this.top = this.top.prev;
+  this.length -= 1;
+
+  return returnNode;
+}
+```
 
 ### III. 최상위 원소 확인(Top)
 
+1. 배열(Array)을 이용한 방식
+
+```jsx
+stack[stack.length - 1]; // index로 최상위 원소 접근
+stack.at(-1); // Array 객체에서 제공하는 인스턴스 메서드 at() 사용
+```
+
+2. 연결 리스트(Linked List)를 이용한 방식
+
+```jsx
+
+```
+
 ### IV. 스택 비어있는지 여부 확인(Empty)
+
+1. 배열(Array)을 이용한 방식
+
+```jsx
+
+```
+
+2. 연결 리스트(Linked List)를 이용한 방식
+
+```jsx
+
+```
 
 ### V. 스택(Stack) 전체 코드
 
 <details>
 <summary>배열(Array)을 이용한 방식</summary>
+
+```jsx
+const stack = []; // 스택 생성
+
+// 1. 스택 원소 삽입(Push)
+stack.push(1);
+stack.push(2);
+stack.push(3);
+stack.push(4);
+stack.push(5);
+
+// 2. 스택 최상위 원소 확인(Top)
+console.log(stack[stack.length - 1]);
+
+// 3. 스택 비어있는지 여부 확인(Empty)
+stack.length ? console.log(false) : console.log(true);
+
+// 4. 스택 원소 삭제(Pop)
+console.log("스택(Stack) 원소 삭제 이전:", stack);
+const value = stack.pop();
+console.log("스택(Stack) 원소 삭제 이후:", stack, "삭제한 원소:", value);
+```
+
+</details>
+
+<br />
+
+<details>
+<summary>연결 리스트(Linked List)을 이용한 방식</summary>
 
 ```jsx
 const a = 10;
