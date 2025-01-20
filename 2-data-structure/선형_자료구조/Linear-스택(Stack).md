@@ -48,13 +48,13 @@
 
 ### I. 원소 삽입(Push)
 
-1. 배열(Array)을 이용한 방식
+#### 1. 배열(Array)을 이용한 방식
 
 ```jsx
 stack.push(10); // Array 객체에서 제공하는 인스턴스 메서드 push() 사용
 ```
 
-2. 연결 리스트(Linked List)를 이용한 방식
+#### 2. 연결 리스트(Linked List)를 이용한 방식
 
 ```jsx
 push(value) {
@@ -67,13 +67,13 @@ push(value) {
 
 ### II. 원소 삭제(Pop)
 
-1. 배열(Array)을 이용한 방식
+#### 1. 배열(Array)을 이용한 방식
 
 ```jsx
 stack.pop(); // Array 객체에서 제공하는 인스턴스 메서드 pop() 사용
 ```
 
-2. 연결 리스트(Linked List)를 이용한 방식
+#### 2. 연결 리스트(Linked List)를 이용한 방식
 
 ```jsx
 pop() {
@@ -90,31 +90,35 @@ pop() {
 
 ### III. 최상위 원소 확인(Top)
 
-1. 배열(Array)을 이용한 방식
+#### 1. 배열(Array)을 이용한 방식
 
 ```jsx
 stack[stack.length - 1]; // index로 최상위 원소 접근
 stack.at(-1); // Array 객체에서 제공하는 인스턴스 메서드 at() 사용
 ```
 
-2. 연결 리스트(Linked List)를 이용한 방식
+#### 2. 연결 리스트(Linked List)를 이용한 방식
 
 ```jsx
-
+top() {
+  return this.top.value;
+}
 ```
 
 ### IV. 스택 비어있는지 여부 확인(Empty)
 
-1. 배열(Array)을 이용한 방식
+#### 1. 배열(Array)을 이용한 방식
 
 ```jsx
-
+!stack.length ? true : false;
 ```
 
-2. 연결 리스트(Linked List)를 이용한 방식
+#### 2. 연결 리스트(Linked List)를 이용한 방식
 
 ```jsx
-
+empty() {
+  return this.length === 0;
+}
 ```
 
 ### V. 스택(Stack) 전체 코드
@@ -152,7 +156,49 @@ console.log("스택(Stack) 원소 삭제 이후:", stack, "삭제한 원소:", v
 <summary>연결 리스트(Linked List)을 이용한 방식</summary>
 
 ```jsx
-const a = 10;
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.prev = null;
+  }
+}
+
+class LinkedListStack {
+  constructor() {
+    this.top = null;
+    this.lenght = 0;
+  }
+
+  // 스택 원소 삽입
+  push(value) {
+    if (this.isEmpty()) return; // 예외 처리
+
+    const newNode = newNode(value); // 새로운 노드 삽입
+    newNode.next = this.top;
+    this.top = newNode;
+    this.lenght += 1;
+  }
+
+  // 스택 원소 삭제
+  pop() {
+    if (this.isEmpty()) return;
+
+    const returnValue = this.top.value;
+    this.top = this.top.next;
+    this.length -= 1;
+    return returnValue;
+  }
+
+  // 스택 최상위 원소 확인
+  top() {
+    return this.top.value;
+  }
+
+  // 스택이 비어있는지 여부
+  isEmpty() {
+    return this.length === 0;
+  }
+}
 ```
 
 </details>
