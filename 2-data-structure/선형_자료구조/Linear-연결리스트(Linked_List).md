@@ -318,3 +318,199 @@ unshift(value) {
 3. 추가하려는 위치의 노드의 포인터를 새로운 노드를 가리키게 만든다.
 
 ### IV. 연결 리스트(Linked List) 전체 코드
+
+```jsx
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+class LinkedList {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+  }
+
+  // 원소 삽입 (첫 번째 위치)
+  unshift(value) {
+    const newNode = new Node(value);
+    newNode.next = this.head;
+    this.head = newNode;
+    this.length += 1;
+  }
+
+  // 원소 삽입 (마지막 위치)
+  push(value) {
+    const newNode = new Node(value);
+
+    if (this.head === null) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.tail.next = newNode;
+      this.tail = newNode;
+    }
+
+    this.length += 1;
+  }
+
+  // 원소 삽입 (특정 위치)
+  insert(value, idx) {
+    if (idx > this.length || idx === 0) return; // 예외 처리
+
+    // 특정 위치의 번호가 첫 번째 위치이면서 연결 리스트에 저장된 원소가 없을 경우
+    if (idx === 1 && this.empty()) {
+      push(value);
+    }
+
+    const newNode = new Node(value); // 새로운 노드를 생성한다.
+
+    // 추가할 위치의 번호가 헤드 노드(Head Node)일 경우
+    if (idx === 1) {
+      newNode.next = this.head;
+      this.head = newNode;
+
+      if (newNode.next === null) {
+        this.tail = newNode;
+      }
+    }
+
+    // 추가할 위치의 번호가 꼬리 노드(Tail Node)일 경우
+    else if (idx === this.length) {
+      this.tail.next = newNode;
+      this.tail = newNode;
+    }
+
+    // 추가할 위치의 번호가 N일 경우
+    else {
+      let currentNode = this.head;
+      let currentIdx = 1;
+
+      while (currentIdx !== idx) {
+        currentNode = currentNode.next;
+        currentIdx += 1;
+      }
+
+      newNode.next = currentNode.next;
+      currentNode.next = newNode;
+    }
+  }
+
+  // 원소 삭제 (첫 번째 위치)
+  shift() {
+    if (this.length === 0) return; // 예외 처리: 연결 리스트에 저장된 원소가 없을 경우
+
+    let returnNode = this.head;
+
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.head = this.head.next;
+    }
+
+    this.length -= 1;
+    return returnNode;
+  }
+
+  // 원소 삭제 (마지막 위치)
+  pop() {
+    if (this.length === 0) return; // 예외 처리: 연결 리스트에 저장된 원소가 없을 경우
+
+    let returnNode;
+
+    // 연결 리스트에 저장된 원소가 하나일 경우
+    if (this.length === 1) {
+      returnNode = this.head;
+      this.head = null;
+      this.tail = null;
+    } else {
+      // 연결 리스트에 저장된 원소가 2개 이상일 경우
+      let currentNode = this.head;
+
+      // 현재 노드의 포인터 영역 주소가 null을 가리키는 노드를 찾을 때까지 순회한다.
+      while (currentNode.next.next !== null) {
+        currentNode = currentNode.next;
+      }
+
+      returnNode = currentNode.next;
+      this.tail = currentNode;
+      this.tail.next = null;
+    }
+
+    this.length -= 1;
+    return returnNode;
+  }
+
+  // 원소 삭제 (특정 위치)
+  remove(idx) {
+    if (idx === 0 || this.length === 0 || idx > this.length) return; // 예외 처리
+
+    let returnNode;
+
+    // 연결 리스트에 저장된 원소가 하나일 경우
+    if (this.length === 1) {
+      returnNode = this.head;
+      this.head = null;
+      this.tail = null;
+    } else {
+      // 연결 리스트에 저장된 원소가 2개 이상일 경우
+      let currentNode = this.head;
+      let currentIdx = 1;
+
+      // 삭제하고 싶은 위치 이전 노드까지 방문한다.
+      while (currentIdx !== idx - 1) {
+        currentNode = currentNode.next;
+        currentIdx += 1;
+      }
+
+      returnNode = currentNode.next;
+      currentNode.next = currentNode.next.next;
+
+      // 삭제한 위치의 노드가 꼬리 노드(Tail Node)인 경우
+      if (currentNode.next === null) {
+        this.tail = currentNode;
+      }
+    }
+
+    this.length -= 1;
+    return returnNode;
+  }
+
+  // 특정 위치 노드 정보 반환
+  get(idx) {
+    if (this.lenght === 0 || idx > this.length || idx === 0) return; // 예외 처리
+    if (this.length === 1 || idx === 1) return this.head; // 헤드 노드(Head Node) 반환
+
+    let currentNode = this.head;
+    let currentIdx = 1;
+
+    while (currentIdx !== idx) {
+      currentNode = currentNode.next;
+      currentIdx += 1;
+    }
+
+    return currentNode;
+  }
+
+  // 특정 위치 노드 데이터 변경
+  set(idx, value) {
+    const updatedNode = this.get(idx);
+
+    if (!updatedNode) return; // 존재하지 인덱스 노드에 접근할 경우 예외 처리
+    updatedNode.value = value; // 존재하는 노드일 경우 데이터 영역 값 수정
+  }
+
+  // 연결 리스트 길이 반환
+  length() {
+    return this.length;
+  }
+
+  // 연결 리스트 비어있는지 여부 확인
+  isEmpty() {
+    return this.length === 0;
+  }
+}
+```
