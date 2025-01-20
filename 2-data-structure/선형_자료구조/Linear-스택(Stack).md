@@ -56,8 +56,8 @@
 <details>
   <summary>배열(Array)을 이용한 방식</summary>
   <pre>
-    <code>
-      JavaScript
+    <code class="language-javascript">
+      const a = 10;
     </code>
   </pre>
 </details>
