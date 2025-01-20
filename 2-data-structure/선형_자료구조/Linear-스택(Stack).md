@@ -55,6 +55,9 @@
 
 <details>
   <summary>배열(Array)을 이용한 방식</summary>
-  ```jsx
-  ```
+  <pre>
+    <code>
+      JavaScript
+    </code>
+  </pre>
 </details>
