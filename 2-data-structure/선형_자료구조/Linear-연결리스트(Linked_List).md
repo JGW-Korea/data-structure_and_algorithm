@@ -213,19 +213,54 @@ shift() {
 #### 1. 마지막에 노드 추가
 
 ```jsx
+push(value) {
+  const newNode = new Node(value); // 새로운 노드를 생성한다.
 
+  // 연결 리스트에 저장된 원소가 없을 경우
+  if(this.head === null) {
+    this.head = newNode;
+    this.tail = newNode;
+  } else { // 연결 리스트에 저장된 원소가 1개 이상일 경우
+    this.tail.next = newNode;
+    this.tail = newNode;
+  }
+
+  this.length += 1;
+}
 ```
 
 #### 2. 특정 위치에 노드 추가
 
 ```jsx
+insert(value, idx) {
+  if(idx > this.length || idx === 0) return; // 예외 처리
 
+  // 특정 위치의 번호가 첫 번째 위치이면서 연결 리스트에 저장된 원소가 없을 경우
+  if(idx === 1 && this.empty()) {
+    push(value);
+  }
+
+  const newNode = new Node(value); // 새로운 노드를 생성한다.
+
+  let currentNode = this.head;
+  let currentIdx = 1;
+
+  while(currentIdx !== idx) {}
+}
 ```
 
 #### 3. 첫 번째 위치에 노드 추가
 
 ```jsx
+unshift(value) {
+  if(this.empty()) push(value); // 연결 리스트에 저장된 원소가 없을 경우
 
+  // 연결 리스트에 저장된 원소가 1개 이상일 경우
+  const newNode = new Node(value);
+  newNode.next = this.head;
+  this.head = newNode;
+  this.length += 1;
+}
 ```
 
 #### 연결 리스트(Linked List) 노드 삽입 동작 원리
@@ -233,3 +268,7 @@ shift() {
 ![linked_list_insert_step_1](/assets/images/data_structor/linked_list/linked_list_insert_step_1.webp)
 ![linked_list_insert_step_2](/assets/images/data_structor/linked_list/linked_list_insert_step_3.webp)
 ![linked_list_insert_step_3](/assets/images/data_structor/linked_list/linked_list_insert_step_2.webp)
+
+1. 새로운 노드를 생성한다.
+2. 추가하려는 위치의 노드가 가리키고 있는 포인터를 새로운 노드의 포인터에게 넘겨준다.
+3. 추가하려는 위치의 노드의 포인터를 새로운 노드를 가리키게 만든다.
