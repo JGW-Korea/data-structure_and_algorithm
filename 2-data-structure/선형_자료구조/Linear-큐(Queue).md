@@ -265,3 +265,10 @@ class QueueLinkedList {
 ```
 
 </details>
+
+## 원형 큐(Circuler Queue)
+
+![원형 큐 배경 이미지](/assets/images/data_structor/queue/circuler_queue.webp)
+
+- 배열로 구현된 큐에서는 Front 위치의 원소를 삭제하면 해당 위치를 비우게 된다.
+- 이로 인해, Front와 Rear을 연결하여 한정된 크기의 큐에서 비워진 공간을 재활용하기 위해 고안되었다.
