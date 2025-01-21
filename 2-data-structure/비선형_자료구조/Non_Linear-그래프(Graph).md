@@ -23,3 +23,27 @@
 - 즉, 특정 정점에서 출발하여 다시 자기 자신으로 돌아올 수 있는 경로를 의미한다.
 
 ## 그래프(Graph) 종류
+
+### 1. 방향 그래프 _Directed Graph_
+
+![방향 그래프](/assets/images/data_structor/graph/directed_graph.webp)
+
+### 2. 무방향 그래프 _Undirected Graph_
+
+![무방향 그래프](/assets/images/data_structor/graph/undirected_graph.webp)
+
+### 3. 연결 그래프 _Connected Graph_
+
+![연결 그래프](/assets/images/data_structor/graph/connected_graph.webp)
+
+### 4. 비연결 그래프 _Disconnected Graph_
+
+![방향 그래프](/assets/images/data_structor/graph/disconnected_graph.webp)
+
+### 5. 완전 그래프 _Completed Graph_
+
+![방향 그래프](/assets/images/data_structor/graph/completed_graph.webp)
+
+## 주의해야 할 그래프 유형
+
+## 그래프(Graph) 표현 방법
