@@ -1,4 +1,4 @@
-![스택 배경 이미지](/assets/images/data_structor/queue/queue_thumbnail.webp)
+![큐 배경 이미지](/assets/images/data_structor/queue/queue_thumbnail.webp)
 
 > 스택(Stack), 큐(Queue), 데크(Dequeue) 자료구조는 기본적으로 특정 위치의 원소를 제외하고, 탐색, 삽입, 삭제가 기본적으로 이루어지면 안된다. 이로 인해 스택(Stack), 큐(Queue), 데크(Dequeue)를 묶어서 **제한된 자료구조(Restricted Structures)**라고 부르기도 한다.
 
