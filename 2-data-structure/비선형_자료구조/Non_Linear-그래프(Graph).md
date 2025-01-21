@@ -28,21 +28,37 @@
 
 ![방향 그래프](/assets/images/data_structor/graph/directed_graph.webp)
 
+- 방향 그래프(Directed Graph)란 간선(Edge)에 방향성이 존재하는 그래프로 해당 방향으로만 이동이 가능하다.
+- 방향 그래프에서는 양방향으로 갈 수 있더라도 _(A, B)_, _(B, A)_ 는 다른 간선으로 취급된다,
+- 실생활의 예시로 **일반 통행**을 생각하면 방향 그래프를 이해하기 쉽다.
+
 ### 2. 무방향 그래프 _Undirected Graph_
 
 ![무방향 그래프](/assets/images/data_structor/graph/undirected_graph.webp)
+
+- 무방향 그래프(Undirected Graph)란 간선(Edge)에 방향성이 존재하지 않는 그래프로 이어진 정점들은 양방향으로 이동이 가능하다.
+- 무방향 그래프는 _(A, B)_ 와 _(B, A)_ 는 같은 간선으로 취급된다.
+- 실생활의 예시로 **양방향 통행 도로**를 생각하면 무방향 그래프를 이해하기 쉽다.
 
 ### 3. 연결 그래프 _Connected Graph_
 
 ![연결 그래프](/assets/images/data_structor/graph/connected_graph.webp)
 
+- 연결 그래프(Connected Graph)란 특정 정점에서 모든 정점으로 이동 가능한 상태인 그래프를 의미한다. _(대표적으로 트리 자료구조가 이에 해당)_
+
 ### 4. 비연결 그래프 _Disconnected Graph_
 
 ![방향 그래프](/assets/images/data_structor/graph/disconnected_graph.webp)
 
+- 비연결 그래프(Disconnected Graph)란 특정 정점쌍 사이에 간선이 존재하지 않는 그래프를 의미한다.
+
 ### 5. 완전 그래프 _Completed Graph_
 
 ![방향 그래프](/assets/images/data_structor/graph/completed_graph.webp)
+
+- 완전 그래프(Completed Graph)란 모든 정점끼리 간선으로 연결된 상태인 그래프를 의미한다.
+- 완전 그래프의 한 개의 정점의 간선 수는 $전체 노드 - 1$ 로 계산할 수 있다.
+- 완전 그래프의 모든 정점의 간선 수는 $(전체 노드 - 1) * 전체 노드$ 로 계산할 수 있다.
 
 ## 주의해야 할 그래프 유형
 
