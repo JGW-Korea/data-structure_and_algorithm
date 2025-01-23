@@ -140,6 +140,8 @@ function postorder(index) {
 
 - 이진 트리는 최대 2개의 자식을 가질 수 있는 특징으로 인해 1차원 배열 또는 연결 리스트를 통해 표현할 수 있다.
 
+<br />
+
 #### 이진 트리(Binary Tree) 구현 방법
 
 **1. 1차원 배열**
@@ -191,6 +193,8 @@ class BinaryTree {
   - 특정 정점에서 부모 노드 위치 계산 : `Math.floor(currentIndex / 2)`
   - 특정 정점의 왼쪽 노드 위치 계산 : `currentIndex * 2`
   - 특정 정점의 오른쪽 노드 위치 계산 : `(currentIndex * 2) + 1`
+
+<br />
 
 **2. 연결 리스트**
 ![이진 트리 연결 리스트로 구현](/assets/images/data_structor/tree/linked_list_binary_tree.webp)
