@@ -2,6 +2,14 @@
 
 알고리즘(Algorithm)이란 특정 문제를 해결하기 위한 명확한 절차와 규칙을 가진 연산 과정이다. 주어진 입력을 바탕으로 일정한 연산을 수행하여 원하는 출력을 생성하며, 다양한 분야에서 활용된다.
 
+| 탐색 알고리즘 종류                                                          | 설명 |
+| --------------------------------------------------------------------------- | ---- |
+| [선형 탐색(Linear Search)](./Search/linear_search.md)                       | ""   |
+| [이진 탐색(Binary Search)](./Search/binary_search.md)                       | ""   |
+| [너비 우선 탐색(Breth-First Search)](<./Search/bfs(breth-first_search).md>) | ""   |
+| [깊이 우선 탐색(Depth-First Search)](<./Search/dfs(depth-first_search).md>) | ""   |
+| [백트래킹(Backtracking)](./Search/back_tracking.md)                         | ""   |
+
 <br />
 
 #### 알고리즘(Algorithm) 조건
