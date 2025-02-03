@@ -87,3 +87,19 @@ if (answer !== -1) {
   console.log("배열에 4가 존재하지 않음");
 }
 ```
+
+## 이진 탐색(Binary Search) 구현 방법 - 이진 탐색 트리(BST, Binary Search Tree)
+
+![이진 탐색 트리](/assets/images/algorithm/search/binary_search_tree.webp)
+
+이진 탐색 트리(BST, Binary Search Tree)란 이진 트리(Binary Tree) 구조에 특정 규칙을 적용하여 탐색을 효율적으로 수행할 수 있도록 만든 자료구조이다.
+
+#### 이진 탐색 트리(Binary Search Tree) 특징
+
+- 이진 탐색(Binary Search) 알고리즘을 트리 형태로 구현한 자료구조이다.
+- 각 노드(Node)는 다음과 같은 규칙을 따른다.
+
+  - 왼쪽 서브 트리의 모든 값은 부모 노드(루트)보다 작은 값들로 구성되어 있다.
+  - 오른쪽 서브 트리의 모든 값은 부모 노드(루트)보다 큰 값들로 구성되어 있다.
+
+- 이진 트리 구조를 통해 이진 탐색 트리의 탐색(Search), 삽입(Insert), 삭제(Delete) 연산을 평균적으로 $O(log N)$의 시간 복잡도로 수행할 수 있다.
