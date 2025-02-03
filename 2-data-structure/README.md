@@ -1,5 +1,7 @@
 ![자료구조 배경 이미지](/assets/images/data_struture-thumbnail.png)
 
+자료구조(Data Structure)란 **데이터를 효율적으로 저장하고 관리하며, 빠르고 안정적으로 처리할 수 있도록 특정한 구조를 갖춘 방식**이다. 자료구조의 궁극적인 목표는 메모리를 효율적으로 사용하고, 연산 속도를 최적화하여 다양한 상황에서 유용하게 활용하는 것이다. 데이터의 종류와 목적에 따라 선형 자료구조(Linear Data Structure), 비선형 자료구조(Non-Linear Data Structure)로 존재하며, 각 자료구조는 특정한 장점과 용도를 가지고 있다.
+
 ### 자료구조(Data Structor) 종류
 
 <img src="/assets/images/data_structor-types.png" alt="자료구조 종류" width="520px" />
