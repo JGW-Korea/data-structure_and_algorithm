@@ -104,6 +104,8 @@ if (answer !== -1) {
 
 - 이진 트리 구조를 통해 이진 탐색 트리의 탐색(Search), 삽입(Insert), 삭제(Delete) 연산을 평균적으로 $O(log N)$의 시간 복잡도로 수행할 수 있다.
 
+<br />
+
 #### 이진 탐색 트리(Binary Search Tree) 문제점
 
 ![이진 탐색 트리](/assets/images/algorithm/search/binary_search_tree_problem.webp)
@@ -117,14 +119,30 @@ if (answer !== -1) {
   - AVL 트리
   - Red-Black 트리
 
-<br />
-
 ### 이진 탐색 트리(BST): 요소 추가(Insert)
+
+![이진 탐색 트리](/assets/images/algorithm/search/binary_search_tree_insert.webp)
+
+1. 이진 탐색 트리에 5를 추가 _루트 정점에 추가_
+1. 이진 탐색 트리에 4를 추가 _왼쪽 서브 트리에 추가_
+1. 이진 탐색 트리에 7를 추가 _오른쪽 서브 트리에 추가_
+1. 이진 탐색 트리에 8를 추가 _오른쪽 → 오른쪽 서브 트리에 추가_
+1. 이진 탐색 트리에 5를 추가 _왼쪽 → 오른쪽 서브 트리에 추가(값이 같을 경우 어느 위치에 추가해도 상관없음)_
+1. 이진 탐색 트리에 6를 추가 _오른쪽 → 왼쪽 → 오른쪽 서브 트리에 추가_
+1. 이진 탐색 트리에 2를 추가 _왼쪽 → 왼쪽 서브 트리에 추가_
 
 ### 이진 탐색 트리(BST): 요소 삭제(Delete)
 
 #### 요소 삭제 #1. 단말 정점(Leaf Node) 삭제
 
+![이진 탐색 트리](/assets/images/algorithm/search/binary_search_tree_leaf-node_delete.webp)
+
+1. 이진 탐색 트리에서 단말 정점(Leaf Node)은 부모 정점(Parent Node)과의 연결만 끊으면 가비지 컬렉터로 인해 자동으로 메모리에서 삭제된다.
+
+<br />
+
 #### 요소 삭제 #2. 하나의 서브 트리를 가지는 노드 삭제
+
+<br />
 
 #### 요소 삭제 #3. 두 개의 서브 트리를 가지는 노드 삭제
