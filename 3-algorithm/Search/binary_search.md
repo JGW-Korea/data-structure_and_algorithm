@@ -152,3 +152,153 @@ if (answer !== -1) {
 <br />
 
 #### 요소 삭제 #3. 두 개의 서브 트리를 가지는 노드 삭제
+
+![이진 탐색 트리](/assets/images/algorithm/search/binary_search_delete_parent_node.webp)
+
+1. 두 개의 서브 트리를 가지는 노드를 삭제하기 위해서는 왼쪽 서브 트리의 가장 큰 값 혹은 오른쪽 서브 트리의 가장 작은 값과 교체하면 된다.
+   - 이 경우 교체된 정점의 좌우 자식이 없다면, 제거되는 정점의 링크로 대체된다.
+
+<br />
+
+### 이진 탐색 트리 구현 로직
+
+```javascript
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+class BinarySearchTree {
+  constructor() {
+    this.root = null;
+  }
+
+  // 이진 탐색 트리 원소 추가 로직
+  insert(value) {
+    const newNode = new Node(value);
+
+    if (this.root === null) {
+      this.root = newNode;
+    } else {
+      let currentNode = this.root;
+
+      while (currentNode !== null) {
+        if (currentNode.value < value) {
+          if (currentNode.right === null) {
+            currentNode.right = newNode;
+            break;
+          }
+
+          currentNode = currentNode.right;
+        } else {
+          if (currentNode.left === null) {
+            currentNode.left = newNode;
+            break;
+          }
+
+          currentNode = currentNode.left;
+        }
+      }
+    }
+  }
+
+  // 이진 탐색 트리 원소 삭제 로직
+  remove(deleteValue) {
+    let currentNode = this.root;
+    let parentNode = null;
+
+    while (currentNode !== null) {
+      if (deleteValue === currentNode.value) {
+        // Case 1: 단말 자식일 경우
+        if (!currentNode.left && !currentNode.right) {
+          if (!parentNode) {
+            // 루트 정점밖에 없을 경우
+            this.root = null;
+          } else if (parentNode.left === currentNode) {
+            parentNode.left = null;
+          } else {
+            parentNode.right = null;
+          }
+        }
+
+        // Case 2: 하나의 서브 트리를 가지는 경우
+        else if (!currentNode.left) {
+          if (!parentNode) {
+            this.root = currentNode.right;
+          } else if (parentNode.left === currentNode) {
+            parentNode.left = currentNode.right;
+          } else {
+            parentNode.right = currentNode.right;
+          }
+        } else if (!currentNode.right) {
+          if (!parentNode) {
+            this.root = currentNode.left;
+          } else if (parentNode.left === currentNode) {
+            parentNode.left = currentNode.left;
+          } else {
+            parentNode.right = currentNode.left;
+          }
+        }
+
+        // Case 3: 두 개의 서브 트리를 가지는 경우
+        else {
+          const minRightSubtree = this._findMinSubtree(currentNode.right);
+          currentNode.value = minRightSubtree.value;
+          currentNode.right = this._removeMinSubtree(
+            minRightSubtree,
+            currentNode.right
+          );
+        }
+      } else if (deleteValue < currentNode.value) {
+        parentNode = currentNode;
+        currentNode = currentNode.left;
+      } else {
+        parentNode = currentNode;
+        currentNode = currentNode.right;
+      }
+    }
+  }
+
+  _findMinSubtree(node) {
+    while (node.left) {
+      node = node.left;
+    }
+
+    return node;
+  }
+
+  _removeMinSubtree(node, parnet) {
+    if (node.left === null) {
+      return node.right;
+    }
+
+    node.left = this._removeMinSubtree(node.left, node);
+    return node;
+  }
+
+  has(value) {
+    let currentNode = this.root;
+
+    while (currentNode !== null) {
+      if (currentNode.value === value) {
+        return true;
+      } else if (value < currentNode.value) {
+        currentNode = currentNode.left;
+      } else {
+        currentNode = currentNode.right;
+      }
+    }
+
+    return false;
+  }
+
+  preOrder(node = this.root) {
+    console.log(node.value);
+    if (node.left) this.preOrder(node.left);
+    if (node.right) this.preOrder(node.right);
+  }
+}
+```
