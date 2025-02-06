@@ -1,73 +1,55 @@
-// DFS 알고리즘
-function dfs(graph, node, start) {
-  const visited = new Array(node + 1).fill(0); // 방문 처리를 위한 배열
-  const result = [];
+function solution(N) {
+  // N x N 크기인 체스판을 일차원 배열로 표현
+  // -> 각 index 위치의 1 ~ N의 값이 세로 위치를 나타내게 됨
+  let board = new Array(N).fill(0);
+  let answer = 0;
 
-  // 렉시컬 스코프 성질을 이용하여 중첩 함수를 선언하여 dfsWorks에 있는 변수는 상위 스코프의 변수를 참조할 수 있게 함
-  function dfsWorks(currentNode) {
-    visited[currentNode] = 1; // 현재 정점 방문 처리
-    result.push(currentNode); // 방문한 정점 결과에 포함
+  // 현재 놓인 퀸들이 서로 공격할 수 있는지 확인
+  function check(current) {
+    for (let i = 0; i < current; i++) {
+      // board[i] === board[current] : i번째 놓인 퀸과 current 위치에 놓인 퀸이 서로 공격할 수 있다는 의미
+      // Math.abs(board[i] - board[current]) === current - i : i번째에 놓인 퀸과 current 위치에 놓인 퀸이 서로 대각선 위치로 공격할 수 있다는 의미
+      if (
+        board[i] === board[current] ||
+        Math.abs(board[i] - board[current]) === current - i
+      ) {
+        return false;
+      }
+    }
 
-    // 이동 가능한 정점 순회
-    for (const nextNode of graph[currentNode]) {
-      if (!visited[nextNode]) {
-        dfsWorks(nextNode);
+    return true;
+  }
+
+  // 재귀를 통해 모든 조건을 확인함
+  function dfs(currentLength) {
+    // 모든 위치에 퀸을 놓게 될 경우 경우의 수를 1 증가시킨 후 이전 조건으로 되돌아감 (가로 구간)
+    if (currentLength === N) {
+      answer += 1;
+      return;
+    }
+
+    // 반복문의 선언식을 통해 체스판 세로 구간을 표현
+    for (let i = 1; i <= N; i++) {
+      board[currentLength] = i; // 일단 currentLength(가로) x i(세로) 위치에 퀸을 둔다.
+
+      // 각 위치에 둔 퀸들이 서로 공격할 수 있는지 파악한다.
+      if (check(currentLength)) {
+        dfs(currentLength + 1);
       }
     }
   }
 
-  // dfs 탐색을 수행
-  dfsWorks(start);
+  dfs(0); // 0 번째 위치부터 확인 (0 -> 가로 왼쪽의 체스 구간)
 
-  return result.join(" ");
-}
-
-// BFS 알고리즘
-function bfs(graph, node, start) {
-  const visited = new Array(node + 1).fill(0); // 방문 처리를 위한 배열
-  visited[start] = 1; // 시작 정점 방문 처리
-
-  const queue = [start]; // BFS 알고리즘을 위한 큐 자료구조
-  const result = [];
-
-  // BFS 탐색 (큐에 정점이 없을 때까지 순회)
-  while (queue.length) {
-    const currentNode = queue.shift(); // 현재 정점을 가져온다.
-    result.push(currentNode); // 결과에 포함
-
-    // 이동 가능한 정점 순회
-    for (const nextNode of graph[currentNode]) {
-      if (!visited[nextNode]) {
-        visited[nextNode] = 1; // 방문 처리
-        queue.push(nextNode); // 이동 가능한 정점 큐 자료구조에 삽입
-      }
-    }
-  }
-
-  return result.join(" ");
+  return answer;
 }
 
 const fs = require("fs");
-const input = fs.readFileSync("index.txt").toString().trim().split("\n");
+const [N] = fs
+  .readFileSync("index.txt")
+  .toString()
+  .trim()
+  .split("\n")
+  .map(Number);
 
-// input.shift()를 이용해서 하면 그래프를 표현을 forEach() 메서드를 통해서 할 수 있음
-// 다만, 간선의 개수(M)이 최대 10,000이기 때문에 배열 자료구조 관념에서 보면 앞으로 당겨오는 작업이 포함되어 있기 때문에
-// 성능상 안좋을 수 있음
-const [N, M, V] = input[0].split(" ").map(Number);
-
-// 인접 리스트 방식으로 그래프 표현 (Node 번호는 1부터 시작)
-const graph = Array.from({ length: N + 1 }, () => []);
-
-for (let i = 1; i < M + 1; i++) {
-  const [from, to] = input[i].split(" ").map(Number); // 정점이 연결된 구간을 가져옴
-
-  // 무방향 연결 리스트이기 때문에 간선을 하나로 취급
-  graph[from].push(to);
-  graph[to].push(from);
-}
-
-// 정점이 여러 개일 경우 작은 정점 번호부터 이동을 해야되기 때문에 각 정점이 갈 수 있는 정점의 번호를 정렬을 시킨다.
-graph.forEach((node) => node.sort((a, b) => a - b));
-
-console.log(dfs(graph, N, V)); // DFS 수행 결과
-console.log(bfs(graph, N, V)); // BFS 수행 결과
+console.log(solution(N));
