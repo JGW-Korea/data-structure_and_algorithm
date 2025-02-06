@@ -18,7 +18,7 @@ for (let i = 1; i < arr.length; i++) {
 console.log(arr);
 ```
 
-삽입 정렬(Insertion Sort)은 선택한 요소를 삽입 할 수 있는 위치를 찾아 삽입하는 방식으로 정렬하는 알고리즘이다.
+삽입 정렬(Insertion Sort)은 선택한 요소를 적절한 위치에 삽입하여 정렬하는 알고리즘이다.
 
 #### 삽입 정렬(Insertion Sort)의 특징
 
