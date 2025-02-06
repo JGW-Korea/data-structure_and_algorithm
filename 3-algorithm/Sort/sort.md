@@ -17,11 +17,11 @@
 
 #### 1. 비교식 정렬(Comparative Sort)
 
-| 비교식 정렬(Comparative Sort) 종류                                | 설명 |
-| ----------------------------------------------------------------- | ---- |
-| [버블 정렬(Bubble Sort)](./comparative_sort/bubble_sort.md)       |      |
-| [선택 정렬(Selection Sort)](./comparative_sort/selection_sort.md) |      |
-| [삽입 정렬(Insertion Sort)](./comparative_sort/insertion_sort.md) |      |
+| 비교식 정렬(Comparative Sort) 종류                                | 설명                                                                               |
+| ----------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| [버블 정렬(Bubble Sort)](./comparative_sort/bubble_sort.md)       | **서로 인접한 두 원소**를 기준에 따라 비교하고 교환하는 방식으로 정렬하는 알고리즘 |
+| [선택 정렬(Selection Sort)](./comparative_sort/selection_sort.md) |                                                                                    |
+| [삽입 정렬(Insertion Sort)](./comparative_sort/insertion_sort.md) |                                                                                    |
 
 - 비교식 정렬(Comparative Sort)은 **두 원소를 기준에 따라 비교하고 교환하는 방식**으로 정렬을 수행하는 알고리즘이다.
 - 비교식 정렬은 두 원소를 비교하기 위해 이중 반복문을 사용하기 때문에 $O(N^{2})$ 시간 복잡도를 가진다.
