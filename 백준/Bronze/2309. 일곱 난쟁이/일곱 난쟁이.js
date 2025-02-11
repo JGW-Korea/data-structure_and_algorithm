@@ -1,24 +1,24 @@
-function solution(arr) {
+function solution(heights) {
+  const totalHeights = heights.reduce((prev, curr) => prev + curr, 0);
 
-  const sum = arr.reduce((prev, curr) => prev + curr);
-  let answer;
-  
-  for(let i=0;i<arr.length;i++) {
-    for(let j=i+1;j<arr.length;j++) {
-      if(sum - (arr[i] + arr[j]) === 100) {
-        answer = arr
-          .filter((item) => item !== arr[i] && item !== arr[j])
-          .sort((a, b) => a - b);
+  for (let i = 0; i < heights.length - 1; i++) {
+    for (let j = i + 1; j < heights.length; j++) {
+      if (totalHeights - (heights[i] + heights[j]) === 100) {
+        return heights
+          .filter((height) => height !== heights[i] && height !== heights[j])
+          .sort((a, b) => a - b)
+          .join("\n");
       }
     }
   }
-
-  return answer;
 }
 
-const fs = require('fs');
-const input = fs.readFileSync('/dev/stdin').toString().trim().split('\n');
+const fs = require("fs");
+const heights = fs
+  .readFileSync("/dev/stdin")
+  .toString()
+  .trim()
+  .split("\n")
+  .map(Number);
 
-const arr = input.map(Number);
-
-console.log((solution(arr)).join('\n'))
+console.log(solution(heights));
