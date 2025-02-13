@@ -14,7 +14,7 @@
 - 콜 스택(Call Stack)의 범위는 대부분의 프로그래밍 언어에서 제한된 크기를 가진다.
 
   - JavaScript의 콜 스택(Call Stack)의 범위는 실행 환경(브라우저, Node.js)마다 제공해주는 크기가 다르다.
-  - 기본적으로 10,000 ~ 100,000번 호출할 수 있는 크기를 제공한다. _<p><$\color{#5ad7b7}set\ text\ color$</p>_
+  - 기본적으로 10,000 ~ 100,000번 호출할 수 있는 크기를 제공한다. _크롬(Chrome) 브라우저 경우 10,000개로 제한되어있음_
   - 콜 스택(Call Stack) 범위를 넘어갈 경우 스택 오버플로우가 발생하며, 자바스크립트에서 `RangeError: Maximum call stack size exceeded` 에러가 발생한다.
 
 - 재귀 함수 콜 스택(Call Stack) 최척화 기법인 꼬리 재귀(Tail Recursion)를 제공하지 않는다.
