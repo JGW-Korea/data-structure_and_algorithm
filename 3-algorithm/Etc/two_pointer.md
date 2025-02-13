@@ -63,6 +63,8 @@ p2 = 4;
 // count의 결과는 3이 나온다.
 ```
 
+<br />
+
 ## 투 포인터(Two Pointer) 코드 구조([백준 3273. 두 수의 합](https://www.acmicpc.net/problem/3273))
 
 ```javascript
