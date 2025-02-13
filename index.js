@@ -1,37 +1,51 @@
-function solution(n, numbers, target) {
-  let answer = 0; // 문제의 조건을 만족하는 쌍의 개수
+function check(current, goal) {
+  for (let i = 0; i < 4; i++) {
+    console.log(current[i], goal[i]);
+    if (current[i] !== goal[i]) return false;
+  }
 
-  // 투 포인터 알고리즘을 위한 두 개의 포인터
-  let p1 = 0;
-  let p2 = n - 1;
+  return true;
+}
 
-  while (p1 < p2) {
-    let sum = numbers[p1] + numbers[p2];
+function solution(S, P, pwd, targetCount) {
+  const currentCount = [0, 0, 0, 0]; // 현재 부분 문자열의 패스워드 개수
 
-    // 두 수의 합이 x와 같을 경우
-    if (sum === target) {
-      answer += 1;
-      p2 -= 1;
-    }
+  let answer = 0;
+  let start = 0; // 윈도우의 시작 구간
+  let end = P - 1; // 윈도우의 마지막 구간
 
-    // 두 수의 합이 x보다 클 경우
-    if (sum > target) p2 -= 1;
-    else {
-      p1 += 1;
+  // 렉시컬 스코프 개념을 이용하여 상위 스코프의 비밀번호와 부분 문자열의 패스워드 개수를 저장하는 변수에 접근할 수 있게 만듬
+  function compare(start, end) {
+    for (let i = start; i < end; i++) {
+      switch (pwd[i]) {
+        case "A":
+          currentCount[0] += 1;
+          break;
+        case "C":
+          currentCount[1] += 1;
+          break;
+        case "G":
+          currentCount[2] += 1;
+          break;
+        case "T":
+          currentCount[3] += 1;
+          break;
+      }
     }
   }
 
-  return answer;
+  // 첫 번째 비교
+  compare(start, end);
+  if (check(currentCount, targetCount)) answer += 1;
+
+  while (end < S) {}
 }
 
 const fs = require("fs");
 const input = fs.readFileSync("index.txt").toString().trim().split("\n");
 
-const N = Number(input[0]);
-const numbers = input[1]
-  .split(" ")
-  .map(Number)
-  .sort((a, b) => a - b);
-const target = Number(input[2]);
+const [S, P] = input[0].split(" ").map(Number);
+const pwd = input[1].split("");
+const counted = input[2].split(" ").map(Number);
 
-console.log(solution(N, numbers, target));
+console.log(solution(S, P, pwd, counted));
