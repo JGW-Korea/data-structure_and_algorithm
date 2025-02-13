@@ -6,7 +6,7 @@
 
 - 이중 반복문을 사용하면 $O(N^{2})$ 시간이 걸리는 문제를, 두 개의 포인터를 활용하여 $O(N)$ 시간에 해결할 수 있도록 최적화할 수 있는 방법을 제공한다.
 
-#### 투 포인터 알고리즘 동작 과정
+#### 투 포인터(Two Pointer) 동작 과정
 
 ![투 포인터 동작 과정](/assets/images/algorithm/etc/two_pointer/two_pointer_works.webp)
 
