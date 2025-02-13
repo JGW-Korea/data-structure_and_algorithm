@@ -1,34 +1,29 @@
-function solution(N, M, trees) {
-  let left = 0;
-  let right = Math.max(...trees);
-  let answer = 0;
+function solution(heights) {
+  const total = heights.reduce((prev, curr) => prev + curr, 0);
 
-  while (left <= right) {
-    let total = 0; // 절단기로 자른 나무의 총합
-    let mid = Math.floor((left + right) / 2);
+  let p1 = 0;
+  let p2 = heights.length - 1;
 
-    // 나무를 현재 절단기로 자름
-    for (let i = 0; i < N; i++) {
-      if (trees[i] > mid) {
-        total += trees[i] - mid; // 자른 나무의 길이를 저장함
-      }
+  while (p1 < p2) {
+    let sum = total - (heights[p1] + heights[p2]);
+
+    if (sum === 100) {
+      return 1;
     }
 
-    if (total >= M) {
-      answer = Math.max(answer, mid);
-      left = mid + 1;
-    } else {
-      right = mid - 1;
+    if (sum > 100) p2 -= 1;
+    else {
+      p1 += 1;
     }
   }
-
-  return answer;
 }
 
 const fs = require("fs");
-const input = fs.readFileSync("index.txt").toString().trim().split("\n");
+const heights = fs
+  .readFileSync("index.txt")
+  .toString()
+  .trim()
+  .split("\n")
+  .map(Number);
 
-const [N, M] = input[0].split(" ").map(Number);
-const trees = input[1].split(" ").map(Number);
-
-console.log(solution(N, M, trees));
+console.log(solution(heights.sort((a, b) => a - b)));
