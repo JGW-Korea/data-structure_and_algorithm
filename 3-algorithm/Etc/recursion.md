@@ -1,21 +1,20 @@
 ![재귀 함수](/assets/images/algorithm/etc/recursion/recursion.png)
 
-[재귀(Recursion) 함수](./recursion.md)는 자기 자신을 직접 또는 간접적으로 호출하는 함수를 의미한다. 일반적으로 특정 문제를 더 작은 하위 문제로 나누어 해결할 때 사용된다.
+[재귀(Recursion) 함수](./recursion.md)는 **자기 자신을 직접 또는 간접적으로 호출하는 함수를 의미**한다. **일반적으로 특정 문제를 더 작은 하위 문제로 나누어 해결할 때 사용**된다.
 
 #### 재귀 함수(Recursion) 특징
 
-- 재귀 호출(Recursion Call) : 재귀 함수를 호출하는 명령줄을 의미한다.
-- 함수 호출은 실행 환경의 콜 스택(Call Stack)에 저장되므로, 스택(Stack) 자료구조와 동일한 방식으로 동작한다.
-- 재귀 함수는 반복문으로 대체할 수 있지만, 반복문에 비해 재귀 함수의 코드가 직관적이기 때문에 재귀 함수를 반복문을 대신하는 경우도 많다.
-- 반복문을 대신하여 특정 문제를 해결하는 데 사용되며, 함수형 프로그래밍에서는 반복문 대신 재귀를 활용하는 경우가 많다.
-- 재귀 함수는 종료 조건(Base Case)을 명시하지 않으면 무한 루프(Infinity Loop)에 빠져 스택 오버플로우(Stack Overflow)가 발생할 수 있다.
+- **재귀 호출(Recursion Call)** : **재귀 함수를 호출하는 명령줄**을 의미한다.
+- 함수 호출은 실행 환경의 콜 스택(Call Stack)에 저장되므로, **스택(Stack) 자료구조와 동일한 방식으로 동작**한다.
+- **반복문을 대신하여 특정 문제를 해결하는 데 사용**되며, 함수형 프로그래밍에서는 반복문 대신 재귀를 활용하는 경우가 많다.
+- 재귀 함수는 **종료 조건(Base Case)을 명시하지 않으면 무한 루프(Infinity Loop)에 빠져 스택 오버플로우(Stack Overflow)가 발생할 수 있다.**
 
 #### [JavaScript 재귀 함수](https://dramatic-jasmine-13a.notion.site/Recursion-Function-13e88bd9c3fa81b58b9fdbfd1d471cd2?pvs=74) 특징
 
 - 콜 스택(Call Stack)의 범위는 대부분의 프로그래밍 언어에서 제한된 크기를 가진다.
 
   - JavaScript의 콜 스택(Call Stack)의 범위는 실행 환경(브라우저, Node.js)마다 제공해주는 크기가 다르다.
-  - 기본적으로 10,000 ~ 100,000번 호출할 수 있는 크기를 제공한다. _크롬(Chrome) 브라우저 경우 10,000개로 제한되어있음_
+  - 기본적으로 10,000 ~ 100,000번 호출할 수 있는 크기를 제공한다. _\color{red}{크롬(Chrome) 브라우저 경우 10,000개로 제한되어있음}_
   - 콜 스택(Call Stack) 범위를 넘어갈 경우 스택 오버플로우가 발생하며, 자바스크립트에서 `RangeError: Maximum call stack size exceeded` 에러가 발생한다.
 
 - 재귀 함수 콜 스택(Call Stack) 최척화 기법인 꼬리 재귀(Tail Recursion)를 제공하지 않는다.
