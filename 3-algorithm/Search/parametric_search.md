@@ -1,3 +1,5 @@
+![파라메트릭 서치](/assets/images/algorithm/search/parametric_search.png)
+
 파라메트릭 서치(Parametric Search)란 **최적화 문제를 결정 문제로 변환하여 해결하는 알고리즘 기법**이다.
 
 - **최적화 문제** : 특정 조건을 만족하는 최적의 값을 찾는 문제를 의미
