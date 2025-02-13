@@ -15,7 +15,19 @@
 
 <br />
 
-## 슬라이딩 윈도우(Sliding Window) 알고리즘 코드 구조([백준 12891. DNA 비밀번호](https://www.acmicpc.net/problem/12891))
+## 슬라이딩 윈도우(Sliding Window) 동작 원리
+
+![슬라이딩 윈도우 동작 과정 1](/assets/images/algorithm/etc/sliding_window/sliding_window_step_1.webp)
+![슬라이딩 윈도우 동작 과정 2](/assets/images/algorithm/etc/sliding_window/sliding_window_step_2.webp)
+![슬라이딩 윈도우 동작 과정 3](/assets/images/algorithm/etc/sliding_window/sliding_window_step_3.webp)
+
+Step 01 : 길이가 3인 부분 집합의 초기 배열을 설정한다. <br />
+Step 02 : 이후 제일 앞의 요소를 제거한 후, 마지막 요소의 다음 원소를 부분 집합에 포함시킨다. <br />
+Step 03 : Step 01, Step 02 과정을 index가 배열의 마지막을 가리킬 때까지 반복한다.
+
+<br />
+
+#### 슬라이딩 윈도우(Sliding Window) 코드 구조([백준 12891. DNA 비밀번호](https://www.acmicpc.net/problem/12891))
 
 ```javascript
 function solution(S, P, pwd, count) {
@@ -108,13 +120,3 @@ function solution(S, P, pwd, count) {
   return answer;
 }
 ```
-
-#### 슬라이딩 윈도우(Sliding Winodw) 동작 과정
-
-![슬라이딩 윈도우 동작 과정 1](/assets/images/algorithm/etc/sliding_window/sliding_window_step_1.webp)
-![슬라이딩 윈도우 동작 과정 2](/assets/images/algorithm/etc/sliding_window/sliding_window_step_2.webp)
-![슬라이딩 윈도우 동작 과정 3](/assets/images/algorithm/etc/sliding_window/sliding_window_step_3.webp)
-
-Step 01 : 길이가 3인 부분 집합의 초기 배열을 설정한다. <br />
-Step 02 : 이후 제일 앞의 요소를 제거한 후, 마지막 요소의 다음 원소를 부분 집합에 포함시킨다. <br />
-Step 03 : Step 01, Step 02 과정을 index가 배열의 마지막을 가리킬 때까지 반복한다.
