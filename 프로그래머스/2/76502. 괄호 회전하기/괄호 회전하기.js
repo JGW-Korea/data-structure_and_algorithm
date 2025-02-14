@@ -7,7 +7,7 @@ function solution(s) {
         
         // 올바른 괄호 문자열인지 판별
         for(let j = 0; j < s.length; j++) {
-            if(["]", ")", "}"].includes(dequeue[0])) {
+            if(j === 0 && ["]", ")", "}"].includes(dequeue[0])) {
                 stack.push(dequeue[0]);
                 break;
             }
