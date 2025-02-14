@@ -1,3 +1,5 @@
+![그리디 알고리즘](/assets/images/algorithm/etc/greedy/greedy.png)
+
 그리디(Greedy) 알고리즘은 **매 순간 최적이라고 판단되는 선택을 반복하여 전체 문제의 근사 해를 구하는 알고리즘**이다.
 
 #### 그리디(Greedy) 알고리즘 특징
