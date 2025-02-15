@@ -6,6 +6,8 @@ for (let i = 1; i <= N; i++) {
 }
 ```
 
+<br />
+
 ## II. 로그 시간 복잡도를 가지는 코드 $O(log N)$
 
 ```javascript
@@ -13,6 +15,8 @@ for (let i = 1; i <= N; i *= 2) {
   // ...
 }
 ```
+
+<br />
 
 ## III. 선형 로그 시간 복잡도를 가지는 코드 $O(N log N)$
 
@@ -24,6 +28,8 @@ for (let i = 1; i <= N; i++) {
 }
 ```
 
+<br />
+
 ## IV. 이차 시간 복잡도를 가지는 코드 $O(N^{2})$
 
 ```javascript
@@ -33,6 +39,8 @@ for (let i = 1; i <= N; i++) {
   }
 }
 ```
+
+<br />
 
 ## V. 지수 시간 복잡도를 가지는 코드 $O(2^{N})$
 
@@ -45,6 +53,8 @@ function fibonnaci(N) {
   return fibonnaci(N - 1) + fibonnaci(N - 2);
 }
 ```
+
+<br />
 
 ## VI. 팩토리얼 시간 복잡도를 가지는 코드 $O(N!)$
 
