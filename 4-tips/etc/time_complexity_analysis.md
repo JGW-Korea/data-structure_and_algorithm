@@ -14,7 +14,7 @@
 
 ## 입력 크기에 따른 허용되는 시간 복잡도
 
-![입력 크기에 따른 허용되는 시간 복잡도](/assets/images/tips/etc/input_size.webp)
+<img src="/assets/images/tips/etc/input_size.webp" alt="입력 크기에 따른 허용되는 시간 복잡도" width="572px" />
 
 > 위 표는 절대적인 기준이 아니며, 연산의 종류와 환경에 따라 달라질 수 있다.
 
