@@ -6,7 +6,7 @@
 
 ## 코드로 소수(Prime Number) 표현 방법
 
-### I. 선형 탐색을 활용한 소수 판별 방법 → $O(N)$ <br />
+### I. 선형 탐색을 활용한 소수 판별 방법 → $O(N)$
 
 ![선형 탐색을 활용한 소수 판별 방법](/assets/images/algorithm/math/prime_linear.webp)
 
@@ -24,7 +24,7 @@ function isPrime(num) {
 
 - 선형 탐색을 활용하여 **2부터 $N - 1$까지의 숫자를 순차적으로 확인**하며, N이 나누어 떨어지는지 검사하는 방법
 
-### II. 제곱근을 활용한 소수 판별 방법 → $O(sqrt(N))$ <br />
+<br /> ### II. 제곱근을 활용한 소수 판별 방법 → $O(sqrt(N))$
 
 <img src="/assets/images/algorithm/math/prime_sqrt.webp" alt="제곱근을 활용한 소수 판별 방법" width="287.97px" />
 
@@ -42,7 +42,7 @@ function isPrime(num) {
 
 - 소수는 **약수가 항상 자신의 제곱근 이하에 존재한다는 특징을 이용**하여, N의 제곱근까지의 수만 확인하여 소수를 판별하는 방법
 
-### III. 에라토스테네스의 체를 활용한 소수 판별 방법 → $O(N log N)$ <br />
+<br /> ### III. 에라토스테네스의 체를 활용한 소수 판별 방법 → $O(N log N)$
 
 ![에라토스테네스의 체를 활용한 소수 판별 방법](/assets/images/algorithm/math/prime_sieve_of_eratosthenes.webp)
 
