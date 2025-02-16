@@ -1,3 +1,5 @@
+> 순열(Permutation)과 조합(Combination) 로직은 백트래킹 알고리즘을 이용해서 작성할 수 있다.
+
 ### 중복 순열(Permutaion with Repetition)
 
 ```javascript
