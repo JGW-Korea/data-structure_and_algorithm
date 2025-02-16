@@ -1,3 +1,5 @@
+### 중복 순열(Permutaion with Repetition)
+
 ```javascript
 // 중복 순열 (중복을 허용하는 순열)
 const N = 3;
@@ -21,6 +23,13 @@ function makePermutaion(currentLength) {
 
 makePermutaion(0);
 ```
+
+- 서로 다른 N개의 요소 중에서 R개를 선택하여, 중복을 허용하면서 순서를 고려하여 나열하는 방법을 의미한다.
+- 중복된 요소의 선택이 가능하므로, 총 경우의 수는 $N^{R}$ 이다.
+
+<br />
+
+### 중복 제외 순열(Permutation without Repetition)
 
 ```javascript
 // 중복 제외 순열
@@ -50,12 +59,5 @@ function makePermutaion(currentLength) {
 makePermutaion(0);
 ```
 
-#### 중복 순열(Permutaion with Repetition) : 서로 다른 N개의 요소 중에서 R개를 선택하여, 중복을 허용하면서 순서를 고려하여 나열하는 방법을 의미한다.
-
-- 중복된 요소의 선택이 가능하므로, 총 경우의 수는 $N^{R}$ 이다.
-
-<br />
-
-#### 중복 제외 순열 : 서로 다른 N 개의 요소 중에서 R 개를 선택하여, 중복 없이 순서를 고려하여 나열하는 방법을 의미한다.
-
+- 서로 다른 N 개의 요소 중에서 R 개를 선택하여, 중복 없이 순서를 고려하여 나열하는 방법을 의미한다.
 - 같은 요소를 여러 번 선택할 수 없으며, 총 경우의 수는 $P(N, R) = \frac{N!}{(N - R)!}$ 이다.
