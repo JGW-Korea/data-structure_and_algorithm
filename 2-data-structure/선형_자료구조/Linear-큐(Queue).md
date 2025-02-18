@@ -79,7 +79,7 @@ queue.push(10); // Array 객체에서 제공하는 인스턴스 메서드 push()
 
 ```jsx
 push(value) {
-  const newNode = newNode(value);
+  const newNode = new Node(value);
 
   // 연결 리스트에 데이터가 없을 경우
   if(this.head === null) {
