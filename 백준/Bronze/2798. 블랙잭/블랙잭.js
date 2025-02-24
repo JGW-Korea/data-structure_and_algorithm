@@ -1,14 +1,10 @@
 function solution(N, M, cards) {
   let answer = 0; // M에 가까운 최대값
 
-  // 총 3장의 카드를 선택할 수 있음 (동일한 카드는 불가)
-  for (let i = 0; i < N; i++) {
-    for (let j = 0; j < N; j++) {
-      if (i === j) continue;
-
-      for (let k = 0; k < N; k++) {
-        if (k === i || k === j) continue;
-
+  // 3중 반복문에서 i < j < k 조건을 보장
+  for (let i = 0; i < N - 2; i++) {
+    for (let j = i + 1; j < N - 1; j++) {
+      for (let k = j + 1; k < N; k++) {
         let sum = cards[i] + cards[j] + cards[k];
 
         if (sum <= M) {
