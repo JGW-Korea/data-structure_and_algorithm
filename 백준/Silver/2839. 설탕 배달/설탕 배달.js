@@ -1,24 +1,23 @@
-let fs = require('fs');
-let input = fs.readFileSync('/dev/stdin').toString().split('\n');
+function solution(N) {
+  let answer = 0;
 
-let n = Number(input[0])
-let count = 0
-let flag = false
+  while (N >= 0) {
+    if (N % 5 === 0) {
+      answer += Math.floor(N / 5);
+      N %= 5;
 
-while(n >= 0) {
+      break;
+    }
 
-  if(n == 0 || n % 5 == 0) {
-    count += parseInt(n / 5);
-    console.log(count);
-    flag = true;
-    break;
+    N -= 3;
+    answer += 1;
   }
 
-  n -= 3;
-  count += 1;
-  
+  // 설탕 봉지가 딱 0으로 나눠질 경우 나눌 수 있는 설탕 봉지 개수를 반환 아닐 경우 -1를 반환
+  return N === 0 ? answer : -1;
 }
 
-if(!flag) {
-  console.log(-1)
-}
+const fs = require("fs");
+const N = Number(fs.readFileSync("/dev/stdin").toString());
+
+console.log(solution(N));
