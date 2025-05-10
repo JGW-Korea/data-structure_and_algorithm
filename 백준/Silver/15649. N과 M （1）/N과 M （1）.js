@@ -1,27 +1,44 @@
-function solution(N, M) {
-  const permutaion = new Array(M).fill(0); // M 길이의 수를 담는 배열
-  const isUsed = new Array(N + 1).fill(0); // 1 ~ N 까지의 사용 유무 표시
+function solution(n, r) {
+  // nPr
+  // 올바른 형식
+  // 1 2
+  // 1 3
+  // 1 4
+  // 올바르지 않는 형식
+  // 1 1
+  // 1 2
+  // 1 3
+  // 1 4
+  const permutation = new Array(r).fill(0); // 1 ~ N 까지의 값을 배열에다가 담아야 합니다.
 
-  let answer = ""; // N^{M}개의 값을 담음
+  // N + 1 => 0 ~ 4 크기를 가지는 배열을 만든거고
+  // index -> 1 ~ N 까지의 각 순서를 의미하게 되는거고
+  // value -> 0 or 1 사용 유무를 판단하게 되는거고
+  const isUsed = new Array(n + 1).fill(0);
 
-  function dfs(current) {
-    if (current === M) {
-      answer += permutaion.join(" ") + "\n";
+  let answer = "";
+
+  // for * 8 / r === 8
+  // current === 8 === for
+
+  function dfs(currentLength) {
+    if (currentLength === r) {
+      answer += permutation.join(" ") + "\n";
       return;
     }
 
     for (let num = 1; num <= N; num++) {
-      // 현재 번호를 사용하지 않고 있는 경우
       if (!isUsed[num]) {
-        permutaion[current] = num;
+        permutation[currentLength] = num;
         isUsed[num] = 1;
-        dfs(current + 1);
+        dfs(currentLength + 1); // 재귀 호출
         isUsed[num] = 0;
       }
     }
   }
 
-  dfs(0); // 현재의 길이 (M까지 도달 시 M 길이가 담김)
+  dfs(0);
+
   return answer;
 }
 
