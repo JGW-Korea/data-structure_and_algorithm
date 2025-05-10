@@ -1,36 +1,92 @@
-function solution(N, times) {
-  // 회의실 사용 시간표를 끝나는 시간으로 오름차순 정렬을 시킨다.
-  times.sort((a, b) => {
-    if (a[1] !== b[1]) return a[1] - b[1];
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
 
-    // 두 스케줄의 끝나는 시간이 동일할 경우 시작 시간을 기준으로 오름차순 정렬을 한다.
-    return a[0] - b[0];
-  });
+class QueueLinkedList {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
 
-  let answer = 1; // 최대 사용 회의 개수 (첫 번째 회의는 반드시 선택된다.)
-  let currentEnd = times[0][1]; // 현재 회의가 끝나는 시간을 명시한다.
+  enqueue(value) {
+    const newNode = new Node(value);
 
-  // 2 ~ N 까지 회의실 시작 시간을 비교한다.
-  for (let i = 1; i < N; i++) {
-    // 현재 끝나는 시간이 다음 회의 시작 시간보다 작거나 같을 경우 다음 회의 진행
-    if (currentEnd <= times[i][0]) {
-      answer += 1;
-      currentEnd = times[i][1]; // 회의 끝나는 시간을 갱신한다.
+    if (this.head === null) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.tail.next = newNode;
+      this.tail = newNode;
+    }
+
+    this.length += 1;
+  }
+
+  dequeue() {
+    if (this.isEmpty()) return;
+
+    const returnValue = this.head.value;
+    this.head = this.head.next;
+    this.length -= 1;
+    return returnValue;
+  }
+
+  isEmpty() {
+    return this.length === 0;
+  }
+}
+
+function solution(n, m, graph) {
+  const visited = Array.from({ length: n }, () => Array.from({ length: m }, () => [0, 0]));
+  visited[0][0][0] = visited[0][0][1] = 1;
+
+  const queue = new QueueLinkedList();
+  queue.enqueue([0, 0, 0]);
+
+  const dx = [-1, 0, 1, 0];
+  const dy = [0, 1, 0, -1];
+
+  while (!queue.isEmpty()) {
+    const [currentX, currentY, state] = queue.dequeue();
+
+    if (currentX === N - 1 && currentY === M - 1) return visited[currentX][currentY][state];
+
+    for (let i = 0; i < 4; i++) {
+      const [nextX, nextY] = [currentX + dx[i], currentY + dy[i]];
+
+      if (nextX < 0 || nextY < 0 || nextX >= n || nextY >= m) continue;
+
+      // 벽이 아니면서, 아직 방문하지 않은 경우
+      if (graph[nextX][nextY] === 0 && !visited[nextX][nextY][state]) {
+        visited[nextX][nextY][state] = visited[currentX][currentY][state] + 1;
+        queue.enqueue([nextX, nextY, state]);
+      }
+
+      // 벽임과 동시에, 아직 방문하지 않고, 벽을 부술 수 있는 경우
+      if (!state && graph[nextX][nextY] === 1 && !visited[nextX][nextY][state]) {
+        visited[nextX][nextY][1] = visited[currentX][currentY][state] + 1;
+        queue.enqueue([nextX, nextY, 1]);
+      }
     }
   }
 
-  return answer;
+  return -1;
 }
 
 const fs = require("fs");
 const input = fs.readFileSync("index.txt").toString().trim().split("\n");
 
-const N = Number(input[0]);
-const times = []; // 시간표를 저장
+const [N, M] = input[0].split(" ").map(Number);
+const graph = [];
 
 for (let i = 1; i < input.length; i++) {
-  const [start, end] = input[i].split(" ").map(Number);
-  times.push([start, end]);
+  graph.push(input[i].split("").map(Number));
 }
 
-console.log(solution(N, times));
+graph.forEach((element) => console.log(element.join(" ")));
+
+console.log(solution(N, M, graph));
