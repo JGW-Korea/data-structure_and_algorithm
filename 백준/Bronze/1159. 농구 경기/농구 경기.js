@@ -1,36 +1,21 @@
-function solution(N, roster) {
-  // 알파벳 개수만큼 배열 생성
-  const count = new Array(26).fill(0);
+function solution(n, players) {
+  const alpha = new Array(26).fill(0); // 알파벳 개수만큼 크기를 가진 배열을 생성한다.
+  // 모든 선수의 성의 개수를 카운트 한다.
+  players.forEach((player) => {
+    alpha[player.charCodeAt() - 97] += 1;
+  });
 
-  // 성을 아스키 코드로 변환 시킨 후 해당 위치에 1 증가
-  for(let i = 0; i < N; i++) {
-    count[roster[i].charCodeAt() - 97] += 1;
-  }
+  // 성이 5개 이상인 선수들만 추출한다.
+  const answer = [];
+  alpha.forEach((count, idx) => {
+    if (count >= 5) answer.push(String.fromCharCode(idx + 97));
+  });
 
-  const result = [];
-
-  // 성의 첫 글자가 같은 선수 5명 이상이면 추가
-  for(let i = 0; i < count.length; i++) {
-    if(count[i] >= 5) {
-      result.push(String.fromCharCode(i + 97));
-    }
-  }
-
-  // 결과 반환
-  return result.length 
-    ? result.sort((a, b) => a > b ? 1 : -1).join('') 
-    : 'PREDAJA';
+  // 성이 5개인 이상인 선수들이 있을 경우 해당 선수들을 보내고 없을 경우 기권한다.
+  return answer.length ? answer.join("") : "PREDAJA";
 }
 
-const fs = require('fs');
-const input = fs.readFileSync('/dev/stdin').toString().trim().split('\n');
+const fs = require("fs");
+const input = fs.readFileSync("/dev/stdin").toString().trim().split("\n");
 
-const N = Number(input.shift());
-
-const roster = [];
-
-for(const element of input) {
-  roster.push(element);
-}
-
-console.log(solution(N, roster));
+console.log(solution(Number(input[0]), input.slice(1)));
