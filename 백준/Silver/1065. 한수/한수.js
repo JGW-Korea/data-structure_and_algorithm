@@ -1,21 +1,21 @@
-const fs = require('fs');
-const input = fs.readFileSync('/dev/stdin').toString().trim();
+function solution(x) {
+  if (x < 100) return x; // 100 이하의 수는 그 수만으로도 한 수에 속한다.
 
-const x = Number(input);
-let answer = 0;
+  let answer = 99; // 100 이하의 수는 자체만으로 한수이기 때문에 answer의 기본값을 99로 초기화한다.
 
-for(let i = 1; i <= x; i++) {
-  if(i < 100) answer += 1; // 100이전까지는 모두 등차수열이기 때문에 1씩 증가한다.
-  else {
-    const strNum = i.toString();
+  // 한수 구하기 로직(100 이상의 수들의 차이가 일정한지만 구한다.)
+  for (let i = 100; i < x + 1; i++) {
+    const numbers = i.toString();
 
-    // 주어진 N이 1000보다 작거나 같다. 하지만, 1000은 등차수열이 아니기 때문에 백의자리를 등차수열을 구한다.
-    const x = Number(strNum[0]) - Number(strNum[1]); 
-    const y = Number(strNum[1]) - Number(strNum[2]);
-
-    // x와 y가 같으면 1을 증가한다.
-    if(x === y) answer += 1;
+    if (Number(numbers[0]) - Number(numbers[1]) === Number(numbers[1]) - Number(numbers[2])) {
+      answer += 1;
+    }
   }
+
+  return answer;
 }
 
-console.log(answer);
+const fs = require("fs");
+const x = Number(fs.readFileSync("/dev/stdin").toString().trim());
+
+console.log(solution(x));
