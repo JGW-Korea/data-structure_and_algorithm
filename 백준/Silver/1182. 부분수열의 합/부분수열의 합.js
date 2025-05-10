@@ -1,20 +1,20 @@
 function solution(n, s, numbers) {
   let answer = 0;
 
-  // 부분 수열의 모든 원소를 더한 값이 S가 되는 모든 경우의 수를 구하는 로직
-  function recursion(current, total) {
-    if (current === n) {
-      if (total === s) answer += 1;
-      return;
+  function recursion(index, sum) {
+    // 빈 부분 수열을 제외하고 합이 정확히 s인 경우만 카운트
+    if (sum === s && index > 0) {
+      answer += 1;
     }
 
-    recursion(current + 1, total);
-    recursion(current + 1, total + numbers[current]);
+    // 현재 인덱스에서 시작하여 모든 가능한 부분 수열을 탐색
+    for (let i = index; i < n; i++) {
+      recursion(i + 1, sum + numbers[i]);
+    }
   }
 
   recursion(0, 0);
-
-  return s === 0 ? answer - 1 : answer;
+  return answer;
 }
 
 const fs = require("fs");
