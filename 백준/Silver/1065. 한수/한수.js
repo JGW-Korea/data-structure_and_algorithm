@@ -1,21 +1,36 @@
-const fs = require('fs');
-const input = fs.readFileSync('/dev/stdin').toString().trim();
+function solution(x) {
+  if (x < 10) return x; // 1 ~ 9까지는 그 수 자체만으로 한수이다.
 
-const x = Number(input);
-let answer = 0;
+  let answer = 9; // 1 ~ 9까지는 그 수 자체만으로 한수이기 때문에 answer의 기본값을 9로 초기화한다.
 
-for(let i = 1; i <= x; i++) {
-  if(i < 100) answer += 1; // 100이전까지는 모두 등차수열이기 때문에 1씩 증가한다.
-  else {
-    const strNum = i.toString();
+  // 한 수 구하기
+  for (let i = 10; i < x + 1; i++) {
+    let numbers = i.toString().split("").map(Number);
 
-    // 주어진 N이 1000보다 작거나 같다. 하지만, 1000은 등차수열이 아니기 때문에 백의자리를 등차수열을 구한다.
-    const x = Number(strNum[0]) - Number(strNum[1]); 
-    const y = Number(strNum[1]) - Number(strNum[2]);
+    let flag = false;
+    let prev = numbers[0] - numbers[1]; // 일의 자리와 십의 자리의 차이를 먼저 구한다.
 
-    // x와 y가 같으면 1을 증가한다.
-    if(x === y) answer += 1;
+    // 십의 자리부터 뒤의 자리까지의 차이를 구한다.
+    for (let j = 1; j < numbers.length - 1; j++) {
+      const current = numbers[j] - numbers[j + 1];
+
+      // 이전 차이와 현재 차이의 값이 동일하지 않으면 차이가 일정한 수열이 아니라는 의미
+      if (prev !== current) {
+        flag = true;
+        break;
+      }
+    }
+
+    // 차이가 일정할 경우 한수의 개수를 1씩 증가한다.
+    if (!flag) {
+      answer += 1;
+    }
   }
+
+  return answer;
 }
 
-console.log(answer);
+const fs = require("fs");
+const x = Number(fs.readFileSync("/dev/stdin").toString().trim());
+
+console.log(solution(x));
