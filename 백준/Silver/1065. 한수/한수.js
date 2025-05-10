@@ -1,28 +1,13 @@
 function solution(x) {
-  if (x < 10) return x; // 1 ~ 9까지는 그 수 자체만으로 한수이다.
+  if (x < 100) return x; // 100 이하의 수는 그 수만으로도 한 수에 속한다.
 
-  let answer = 9; // 1 ~ 9까지는 그 수 자체만으로 한수이기 때문에 answer의 기본값을 9로 초기화한다.
+  let answer = 99; // 100 이하의 수는 자체만으로 한수이기 때문에 answer의 기본값을 99로 초기화한다.
 
-  // 한 수 구하기
-  for (let i = 10; i < x + 1; i++) {
-    let numbers = i.toString().split("").map(Number);
+  // 한수 구하기 로직(100 이상의 수들의 차이가 일정한지만 구한다.)
+  for (let i = 100; i < x + 1; i++) {
+    const numbers = i.toString().split("").map(Number);
 
-    let flag = false;
-    let prev = numbers[0] - numbers[1]; // 일의 자리와 십의 자리의 차이를 먼저 구한다.
-
-    // 십의 자리부터 뒤의 자리까지의 차이를 구한다.
-    for (let j = 1; j < numbers.length - 1; j++) {
-      const current = numbers[j] - numbers[j + 1];
-
-      // 이전 차이와 현재 차이의 값이 동일하지 않으면 차이가 일정한 수열이 아니라는 의미
-      if (prev !== current) {
-        flag = true;
-        break;
-      }
-    }
-
-    // 차이가 일정할 경우 한수의 개수를 1씩 증가한다.
-    if (!flag) {
+    if (numbers[0] - numbers[1] === numbers[1] - numbers[2]) {
       answer += 1;
     }
   }
