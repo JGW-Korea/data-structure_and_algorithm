@@ -1,27 +1,24 @@
 function solution(str) {
-  const alphabet = 'abcdefghijklmnopqrstuvwxyz';
-  const count = new Array(alphabet.length).fill(0);
+  const alpha = new Array(26).fill(0); // 알파벳의 개수만큼의 크기를 생성한다.
 
-  // 가장 많이 사용된 알파벳 카운팅
-  for(const word of str) {
-    count[alphabet.indexOf(word)] += 1;
+  // 알파벳 개수를 증가시킨다.
+  for (let i = 0; i < str.length; i++) {
+    alpha[str[i].charCodeAt() - 97] += 1;
   }
 
   // 가장 많이 사용된 알파벳 개수
-  const max = Math.max(...count);
+  const max = Math.max(...alpha);
   const result = [];
-
-  // 여러 개 존재하는 경우
-  for(let i = 0; i < count.length; i++) {
-    if(count[i] === max) {
-      result.push(i);
+  for (let i = 0; i < alpha.length; i++) {
+    if (max === alpha[i]) {
+      result.push(String.fromCharCode(97 + i).toUpperCase());
     }
   }
 
-  return result.length >= 2 ? '?' : alphabet[result[0]].toUpperCase();
+  return result.length > 1 ? "?" : result[0];
 }
 
-const fs = require('fs');
-const input = fs.readFileSync('/dev/stdin').toString().trim();
+const fs = require("fs");
+const str = fs.readFileSync("/dev/stdin").toString().trim().toLowerCase();
 
-console.log(solution(input.toLowerCase()));
+console.log(solution(str));
