@@ -5,9 +5,9 @@ function solution(x) {
 
   // 한수 구하기 로직(100 이상의 수들의 차이가 일정한지만 구한다.)
   for (let i = 100; i < x + 1; i++) {
-    const numbers = i.toString().split("").map(Number);
+    const numbers = i.toString();
 
-    if (numbers[0] - numbers[1] === numbers[1] - numbers[2]) {
+    if (Number(numbers[0]) - Number(numbers[1]) === Number(numbers[1]) - Number(numbers[2])) {
       answer += 1;
     }
   }
