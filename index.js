@@ -1,38 +1,27 @@
-const white = ["WBWBWBWB", "BWBWBWBW", "WBWBWBWB", "BWBWBWBW", "WBWBWBWB", "BWBWBWBW", "WBWBWBWB", "BWBWBWBW"]; // 흰색 체스판
-const black = ["BWBWBWBW", "WBWBWBWB", "BWBWBWBW", "WBWBWBWB", "BWBWBWBW", "WBWBWBWB", "BWBWBWBW", "WBWBWBWB"]; // 검은색 체스판
-
-function solution(m, n, board) {
-  let answer = Number.MAX_SAFE_INTEGER;
-
-  function check(x, y) {
-    let whiteCount = 0; // 흰색 개수
-    let blackCount = 0; // 검은색 개수
-
-    // -> 주어진 체스판을 기존 흰색, 검은색 체스판 규칙에 맞게 바꿔야 될 위치를 계산한다.
-    for (let i = x; i < x + 8; i++) {
-      for (let j = y; j < y + 8; j++) {
-        if (board[i][j] !== white[i - x][j - y]) whiteCount += 1;
-        if (board[i][j] !== black[i - x][j - y]) blackCount += 1;
-      }
-    }
-
-    return Math.min(whiteCount, blackCount); // 가장 적게 바꾼 바둑판으로 교체한다.
-  }
-
-  // -> 주어진 체스판과 기존 흰색, 검은 체스판 차이까지만 증가시킨다.
-  for (let row = 0; row <= m - 8; row++) {
-    for (let col = 0; col <= n - 8; col++) {
-      answer = Math.min(answer, check(row, col));
-    }
-  }
-
-  return answer;
-}
-
 const fs = require("fs");
 const input = fs.readFileSync("index.txt").toString().trim().split("\n");
 
-const [M, N] = input[0].split(" ").map(Number);
-const board = input.slice(1).map((element) => element.split(""));
+function solution(n, prices) {
+  const dp = Array.from({ length: n }, () => [0, 0, 0]); // DP 테이블 초기화
 
-console.log(solution(M, N, board));
+  // DP 테이블 초기식 정립
+  dp[0][0] = prices[0][0];
+  dp[0][1] = prices[0][1];
+  dp[0][2] = prices[0][2];
+
+  // 점화식 -> dp[i][0] = p[i][0] + min(dp[i - 1][1], dp[i - 1][2])
+  // 점화식 -> dp[i][1] = p[i][1] + min(dp[i - 1][0], dp[i - 1][2])
+  // 점화식 -> dp[i][2] = p[i][2] + min(dp[i - 1][0], dp[i - 1][1])
+  for (let i = 1; i < n; i++) {
+    dp[i][0] = prices[i][0] + Math.min(dp[i - 1][1], dp[i - 1][2]);
+    dp[i][1] = prices[i][1] + Math.min(dp[i - 1][0], dp[i - 1][2]);
+    dp[i][2] = prices[i][2] + Math.min(dp[i - 1][0], dp[i - 1][1]);
+  }
+
+  return Math.min(...dp[n - 1]);
+}
+
+const N = Number(input[0]);
+const prices = input.slice(1).map((element) => element.split(" ").map(Number));
+
+console.log(solution(N, prices));
