@@ -75,7 +75,7 @@ class MaxHeap {
   }
 }
 
-let input = require("fs")
+const input = require("fs")
   .readFileSync("index.txt")
   .toString()
   .trim()
