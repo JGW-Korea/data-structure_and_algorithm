@@ -151,14 +151,8 @@ class MaxHeap {
     let currentIndex = this.heap.length - 1;
     let parentIndex = Math.floor(currentIndex / 2);
 
-    while (
-      parentIndex < this.heap.length - 1 &&
-      this.heap[currentIndex] > this.heap[parentIndex]
-    ) {
-      [this.heap[currentIndex], this.heap[parentIndex]] = [
-        this.heap[parentIndex],
-        this.heap[currentIndex],
-      ];
+    while (parentIndex !== 0 && this.heap[currentIndex] > this.heap[parentIndex]) {
+      [this.heap[currentIndex], this.heap[parentIndex]] = [this.heap[parentIndex], this.heap[currentIndex]];
 
       currentIndex = parentIndex;
       parentIndex = Math.floor(currentIndex / 2);
@@ -177,22 +171,14 @@ class MaxHeap {
     let rightIndex = currentIndex * 2 + 1;
 
     while (
-      (leftIndex < this.heap.length &&
-        this.heap[currentIndex] < this.heap[leftIndex]) ||
-      (rightIndex < this.heap.length &&
-        this.heap[currentIndex] < this.heap[rightIndex])
+      (leftIndex < this.heap.length && this.heap[currentIndex] < this.heap[leftIndex]) ||
+      (rightIndex < this.heap.length && this.heap[currentIndex] < this.heap[rightIndex])
     ) {
       if (this.heap[leftIndex] < this.heap[rightIndex]) {
-        [this.heap[currentIndex], this.heap[rightIndex]] = [
-          this.heap[rightIndex],
-          this.heap[currentIndex],
-        ];
+        [this.heap[currentIndex], this.heap[rightIndex]] = [this.heap[rightIndex], this.heap[currentIndex]];
         currentIndex = rightIndex;
       } else {
-        [this.heap[currentIndex], this.heap[leftIndex]] = [
-          this.heap[leftIndex],
-          this.heap[currentIndex],
-        ];
+        [this.heap[currentIndex], this.heap[leftIndex]] = [this.heap[leftIndex], this.heap[currentIndex]];
         currentIndex = leftIndex;
       }
 
