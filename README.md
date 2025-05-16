@@ -20,11 +20,7 @@
 
 ## 💡 참고사항
 
-### 👨🏼‍💻 Language
-
-| <img src="/assets/icons/js-svgrepo-com.svg" alt="javascript icon" width="200px" /> | <img src="/assets/icons/typescript-svgrepo-com.svg" alt="typescript icon" width="200px" /> |
-| :--------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: |
-|                                   **JavaScript**                                   |                                       **TypeScript**                                       |
+> 문제 풀이 언어는 JavaScript로 진행하고 있습니다.
 
 ### 📝 Git Commit Convention
 
