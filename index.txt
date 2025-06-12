@@ -1,6 +1,1 @@
-5
-A
-AB
-ABC
-ABCD
-ABCDE
+3 7
