@@ -1,35 +1,25 @@
-const fs = require("fs");
-const input = fs.readFileSync("index.txt").toString().trim().split("\n");
+function solution(h1, m1, s1, h2, m2, s2) {
+  let answer = 0; // 알림이 울린 횟수
 
-const N = Number(input[0]);
-const strSet = input.slice(1);
+  let flag = false; // 처음 시점인지 확인
+  for (let h = h1; h < h2 + 1; h++) {
+    for (let m = !flag ? m1 : 0; m < 60; m++) {
+      for (let s = !flag ? s1 : 0; s < 60; s++) {
+        if (!flag) flag = true; // 처음 시점 이후 초기값이 m1, s1이 아닌, 0부터 시작
 
-function solution(n, strSet) {
-  let answer = 0; // 연속 단어 개수
+        console.log(
+          `${h.toString().padStart(2, "0")}:${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`
+        );
 
-  for (const str of strSet) {
-    let current = str[0];
-    let flag = false;
-
-    const set = new Set(current);
-
-    for (let i = 1; i < str.length; i++) {
-      const next = str[i];
-      
-      if (current === next) continue; // 현재 단어와 다음 단어가 동일한 경우 넘어감
-      else if(current !== next && !set.has(next)) {
-        current = next;
-        set.add(next);
-      } else {
-        flag = true;
-        break
+        if (s === m || s === h) {
+          console.log("answer + 1");
+          console.log();
+          answer += 1;
+        }
+        if (h === h2 && m === m2 && s === s2) return answer;
       }
     }
-
-    if(!flag) answer += 1;
   }
-
-  return answer
 }
 
-console.log(solution(N, strSet));
+solution(0, 5, 30, 0, 7, 0);
