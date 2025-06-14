@@ -25,39 +25,15 @@
 
 ### 📝 Git Commit Convention
 
-<table>
-  <thead>
-    <tr>
-      <th>커밋 타입</th>
-      <th>내용</th>
-    </tr>
-  </thead>
+| 커밋 타입 | 설명                                                |
+| --------- | --------------------------------------------------- |
+| `docs`    | 문서 내용 작성 및 추가･수정한 경우                  |
+| `format`  | 코딩 테스트 문제 풀이 후 문제 파일 추가･수정한 경우 |
+| `remove`  | 파일･폴더･문서를 삭제한 경우                        |
 
-  <tbody>
-    <tr>
-      <td>feat</td>
-      <td>새로운 내용을 추가할 경우</td>
-    </tr>
-    <tr>
-      <td>update</td>
-      <td>내용을 수정할 경우</td>
-    </tr>
-    <tr>
-      <td>remove</td>
-      <td>파일 또는 폴더를 삭제할 경우</td>
-    </tr>
-    <tr>
-      <td>docs</td>
-      <td>문서 내용 작성 및 수정할 경우</td>
-    </tr>
-    <tr>
-      <td>format</td>
-      <td>(Keyword) 출처 유형 난이} 제목</td>
-    </tr>
-  </tbody>
-</table>
+<br />
 
-### format - Keyword 종류
+#### format - Keyword 종류
 
 ```bash
 # solve -> 풀이에 성공한 문제
