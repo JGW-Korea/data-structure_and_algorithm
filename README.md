@@ -1,4 +1,4 @@
-![repository thumbnail](/assets/images/coding_test.png)  
+![repository thumbnail](/assets/images/coding-test_thumbnail.png)  
 | 주제 | 설명 |
 | ------------------------------------------- | --------------------------------------------------------- |
 | [I. 개요](/1-overview/README.md) | 시간 복잡도와 공간 복잡도 내용을 다룹니다. |
@@ -16,8 +16,6 @@
 1. [제대로 파는 자바스크립트(JavaScript) - by 얄코 : 자바스크립트 기초 문법 강의](https://www.inflearn.com/course/%EC%A0%9C%EB%8C%80%EB%A1%9C-%ED%8C%8C%EB%8A%94-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/dashboard)
 1. [코딩테스트 광탈 방지 A to Z : JavaScript : 자바스크립트 자료구조 및 알고리즘 강의](https://school.programmers.co.kr/learn/courses/13213/13213-%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8-%EA%B4%91%ED%83%88-%EB%B0%A9%EC%A7%80-a-to-z-javascript)
 1. [바킹독의 실전 알고리즘 강의 : 바킹독 자료구조 및 알고리즘 강의(무료, 주의사항 : C++ 언어 강의)](https://www.youtube.com/playlist?list=PLtqbFd2VIQv4O6D6l9HcD732hdrnYb6CY)
-
-<br />
 
 ## 💡 참고사항
 
