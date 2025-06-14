@@ -3,7 +3,7 @@
 > 코딩 테스트 준비를 위해 주제별로 문제를 분류하고 풀이를 정리해두는 저장용 문서입니다.
 > 백준과 프로그래머스 문제를 중심으로 구성했으며, 각 주제별로 대표 문제를 선정해 기록하고 있습니다.
 
-## 📚 문제 사이트
+## 📚 문제 사이트 <br />
 
 ### 🔹 온라인 저지
 
@@ -22,10 +22,14 @@
 *b3..s1 !@$me s#1000.. #simulation
 ```
 
+<br />
+
 ### 🔹 추천 문제집
 
 - [바킹독 알고리즘 강의 문제집](https://github.com/encrypted-def/basic-algo-lecture/blob/master/workbook.md)
 - [코딩테스트 대비 문제집 with Baekjoon (tony9402)](https://github.com/tony9402/baekjoon?tab=readme-ov-file)
+
+<br />
 
 ## 📂 주제별 문제집 목록
 
