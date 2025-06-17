@@ -1,2 +1,2 @@
-ababababa
-aba
+5
+1 2 4 8 16
