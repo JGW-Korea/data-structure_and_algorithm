@@ -1,6 +1,6 @@
 ![Prime Number](/assets/images/tips/math/prime_number/prime_number.webp)
 
-**소수(Prime Number)**란, **1과 자기 자신만을 약수로 가지는 양의 정수**를 의미한다.
+**소수(Prime Number)** 란, **1과 자기 자신만을 약수로 가지는 양의 정수**를 의미한다.
 
 ## I. 소수(Prime Number) 알고리즘 - 특정 수가 소수인지 판별하는 방법
 
