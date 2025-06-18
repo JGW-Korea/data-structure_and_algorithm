@@ -1,18 +1,16 @@
-![소수](/assets/images/algorithm/math/prime.webp)
+![Prime Number](/assets/images/tips/math/prime_number/prime_number.webp)
 
-소수(Prime Number)란 **1과 자기 자신을 제외한 다른 어떤 자연수로도 나누어 떨어지지 않는 1보다 큰 자연수를 의미**한다.
+**소수(Prime Number)**란, **1과 자기 자신만을 약수로 가지는 양의 정수**를 의미한다.
 
-<br />
+## I. 소수(Prime Number) 알고리즘 - 특정 수가 소수인지 판별하는 방법
 
-## 코드로 소수(Prime Number) 표현 방법
+### 1. 선형 탐색을 활용한 소수 판별 방법
 
-### I. 선형 탐색을 활용한 소수 판별 방법 → $O(N)$
-
-![선형 탐색을 활용한 소수 판별 방법](/assets/images/algorithm/math/prime_linear.webp)
+![선형 소수 판별](/assets/images/tips/math/prime_number/lenear-prime.webp)
 
 ```javascript
-function isPrime(num) {
-  for (let i = 2; i < num; i++) {
+function isPrime(N) {
+  for (let i = 2; i < N; i++) {
     if (num % i === 0) {
       return false;
     }
@@ -22,17 +20,16 @@ function isPrime(num) {
 }
 ```
 
-- 선형 탐색을 활용하여 **2부터 $N - 1$까지의 숫자를 순차적으로 확인**하며, N이 나누어 떨어지는지 검사하는 방법
+- **선형 탐색**을 이용하여 **2부터 N - 1 까지의 모든 수로 나누어 떨어지는지 확인함으로써, N이 소수인지 판별하는 방법**이다.
+- 시간 복잡도는 **$O(N)$**이며, 수가 클수록, **비효율적**이다.
 
-<br />
+### 2. 제곱근을 활용한 소수 판별 방법
 
-### II. 제곱근을 활용한 소수 판별 방법 → $O(sqrt(N))$
-
-<img src="/assets/images/algorithm/math/prime_sqrt.webp" alt="제곱근을 활용한 소수 판별 방법" width="287.97px" />
+![제곱근 소수 판별](/assets/images/tips/math/prime_number/sqrt-prime.webp)
 
 ```javascript
-function isPrime(num) {
-  for (let i = 2; i <= Math.sqrt(num); i++) {
+function isSqrtPrime(N) {
+  for (let i = 2; i * i < N + 1; i++) {
     if (num % i === 0) {
       return false;
     }
@@ -42,33 +39,33 @@ function isPrime(num) {
 }
 ```
 
-- 소수는 **약수가 항상 자신의 제곱근 이하에 존재한다는 특징을 이용**하여, N의 제곱근까지의 수만 확인하여 소수를 판별하는 방법
+- **제곱근**을 이용하면, **2부터 $\sqrt{N}$ 이하의 수로만 나누어 떨어지는지 확인함으로써, N이 소수인지 판별하는 방법**이다.
+- 시간 복잡도는 **$O(\sqrt{N})$** 이며, 소수가 아닌 수는 반드시 $\sqrt{N}$ 이하의 약수를 가지므로 **선형 탐색보다 훨씬 효율적**이다.
 
-<br />
+## II. 소수(Prime Number) 알고리즘 - 특정 수 이하의 모든 소수를 구하는 방법
 
-### III. 에라토스테네스의 체를 활용한 소수 판별 방법 → $O(N log N)$
+### 1. 에라토스테네스의 체(Sieve of Eratosthenes)
 
-![에라토스테네스의 체를 활용한 소수 판별 방법](/assets/images/algorithm/math/prime_sieve_of_eratosthenes.webp)
+![제곱근 소수 판별](/assets/images/tips/math/prime_number/sieve_of_eratosthenes.webp)
 
 ```javascript
-function getPrime(num) {
-  const prime = new Array(num + 1).fill(true);
-  prime[0] = prime[1] = false;
+function getPrime(N) {
+  const prime = new Array(N + 1).fill(true);
+  prime[0] = false;
 
-  for (let i = 2; i <= Math.sqrt(num); i++) {
+  for (let i = 2; i * i < N + 1; i++) {
     if (prime[i]) {
-      for (let j = i * i; j <= num; j += i) {
+      for (let j = i * i; j < N + 1; j += i) {
         prime[j] = false;
       }
     }
   }
 
-  return prime
-    .map((number, idx) => (number ? idx : null))
-    .filter((number) => number !== null);
+  return prime.filter(Boolean);
 }
 ```
 
-- 고대 그리스 수학자 에라토스테네스가 고안한 소수 판별 알고리즘
-- 소수를 찾는 방법 중 가장 효율적이고 널리 사용되는 방식
-- 에라토스테네스의 체는 **1 ~ N 까지 존재하는 모든 소수를 한 번에 판별할 때 가장 효과적인 알고리즘**
+- **에라토스테네스의 체**는 주어진 수 N 이하의 **모든 소수를 효율적으로 구하는 대표적인 알고리즘**이다.
+- 초기에는 0부터 N까지의 모든 수를 소수라고 가정한 뒤, 2부터 시작하여 해당 수의 배수를 모두 제거하면서 **소수가 아닌 수를 걸러낸다.**
+- 한 수 i의 배수 제거는 $i^{2}$ 부터 시작해도 충분하며, 그보다 작은 배수는 **이미 이전 단계에서 제거되었기 때문**이다.
+- 시간 복잡도는 **$O(N log log N)$** 으로 **매우 효율적**이다.
