@@ -50,7 +50,7 @@ class MinHeap {
       }
 
       // 왼쪽 자식이 현재 값보다 큰 경우
-      if (leftIdx >= this.heap.length || this.heap[leftIdx].cost >= this.heap[currentIdx]) break;
+      if (leftIdx >= this.heap.length || this.heap[leftIdx].cost >= this.heap[currentIdx].cost) break;
 
       this._swap(currentIdx, smallIdx);
       currentIdx = smallIdx;
