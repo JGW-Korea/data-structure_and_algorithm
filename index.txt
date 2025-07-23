@@ -1,4 +1,4 @@
-3 6
-HFDFFB
-AJHGDH
-DGAGEH
+3
+1 2 3
+4 5 6
+4 9 0
